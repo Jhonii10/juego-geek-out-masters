@@ -50,6 +50,7 @@ public class InterfazDeUsuario extends JFrame {
     public static void main(String[] args){
         EventQueue.invokeLater(() -> {
             InterfazDeUsuario miProjectGUI = new InterfazDeUsuario();
+            JOptionPane.showMessageDialog(null,"Bienvenido");
         });
     }
 
