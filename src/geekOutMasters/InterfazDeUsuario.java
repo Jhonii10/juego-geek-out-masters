@@ -1,25 +1,25 @@
-package myProject;
+package geekOutMasters;
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
  * This class is used for ...
- * @autor Carlos Felipe Montoya carlos.felipe.montoya@correounivalle.edu.co
+ * @autor Jhoni ipia
  * @version v.1.0.0 date:21/03/2023
  */
-public class GUI extends JFrame {
+public class InterfazDeUsuario extends JFrame {
 
     private Header headerProject;
 
     /**
      * Constructor of GUI class
      */
-    public GUI(){
+    public InterfazDeUsuario(){
         initGUI();
 
         //Default JFrame configuration
-        this.setTitle("The Title app");
+        this.setTitle("Geek out master");
         this.setSize(200,100);
         //this.pack();
         this.setResizable(true);
@@ -48,7 +48,7 @@ public class GUI extends JFrame {
      */
     public static void main(String[] args){
         EventQueue.invokeLater(() -> {
-            GUI miProjectGUI = new GUI();
+            InterfazDeUsuario miProjectGUI = new InterfazDeUsuario();
         });
     }
 
