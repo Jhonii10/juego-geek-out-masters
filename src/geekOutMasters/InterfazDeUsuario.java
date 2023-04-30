@@ -20,12 +20,13 @@ public class InterfazDeUsuario extends JFrame {
 
         //Default JFrame configuration
         this.setTitle("Geek out master");
-        this.setSize(200,100);
-        //this.pack();
+        this.setSize(1000,600);
         this.setResizable(true);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        getContentPane().setBackground(new Color(255,255,255));
+
     }
 
     /**
@@ -36,7 +37,7 @@ public class InterfazDeUsuario extends JFrame {
         //Set up JFrame Container's Layout
         //Create Listener Object and Control Object
         //Set up JComponents
-        headerProject = new Header("Geek out masters", Color.BLACK);
+        headerProject = new Header("GEEK OUT MASTERS", Color.white);
 
         this.add(headerProject,BorderLayout.NORTH); //Change this line if you change JFrame Container's Layout
     }
