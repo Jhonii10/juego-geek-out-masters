@@ -46,10 +46,11 @@ import java.util.ArrayList;
         estadoToString = new String[7];
     }
 
-    This function addes the active dices an DadosActivos array.
+ /**
+     * This function addes the active dices an DadosActivos array.
      */
 
-    public void determinateDadosActivos() {
+     public void determinateDadosActivos() {
         dadosActivosArray.add(dado1);
         dadosActivosArray.add(dado2);
         dadosActivosArray.add(dado3);
@@ -58,6 +59,7 @@ import java.util.ArrayList;
         dadosActivosArray.add(dado6);
         dadosActivosArray.add(dado7);
     }
+
 
     /**
      * This function addes the active dices an DadosActivos array.
@@ -94,3 +96,47 @@ import java.util.ArrayList;
     public void addDiceFromArray(ArrayList<Dados> array, Dados dado) {
         array.add(dado);
     }
+
+    /**
+     * This function determinate round score.
+     */
+
+    public void determinateScore() {
+        switch (puntos) {
+            case 0:
+                puntaje = 0;
+                break;
+            case 1:
+                puntaje = 1;
+                break;
+            case 2:
+                puntaje = 3;
+                break;
+            case 3:
+                puntaje = 6;
+                break;
+            case 4:
+                puntaje = 10;
+                break;
+            case 5:
+                puntaje = 15;
+                break;
+            case 6:
+                puntaje = 21;
+                break;
+            case 7:
+                puntaje = 28;
+                break;
+            case 8:
+                puntaje = 36;
+                break;
+            case 9:
+                puntaje = 45;
+                break;
+            case 10:
+                puntaje = 55;
+                break;
+            default:
+                puntaje = puntaje;
+        }
+    }   
