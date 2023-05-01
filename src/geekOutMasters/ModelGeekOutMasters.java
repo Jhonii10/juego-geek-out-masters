@@ -152,4 +152,65 @@ import java.util.ArrayList;
         }
     }
 
+/**
+     * This function runs the power of the dragon.
+     */
 
+     public void drakeDices() {
+        for (unDado = 0; unDado < dadosActivosArray.size(); unDado++) {
+            if (dadosActivosArray.get(unDado).getCara() == 5) {
+                puntos = 0;
+                puntaje = 0;
+            }
+        }
+    }
+
+    
+/**
+     * This function runs the power of the meeple.
+     *
+     * @param posicionDadoActivo
+     */
+
+     public void meeple(int posicionDadoActivo) {
+        dadosActivosArray.get(posicionDadoActivo).newCara();
+    }
+
+    /**
+     * This function runs the power of the spaceship.
+     *
+     * @param posicionDadoActivo
+     */
+
+    public void spaceship(int posicionDadoActivo) {
+        addDiceFromArray(dadosInactivosArray, dadosActivosArray.get(posicionDadoActivo));
+        removeDiceFromArray(posicionDadoActivo, dadosActivosArray);
+    }
+
+    /**
+     * This function runs the power of the superhero.
+     *
+     * @param posicionDadoActivo
+     */
+
+    public void superhero(int posicionDadoActivo) {
+        dadosActivosArray.get(posicionDadoActivo).getCaraOpuesta();
+    }
+
+    /**
+     * This function runs the power of the heart.
+     *
+     * @param posicionDadoActivo
+     */
+
+    public void heart(int posicionDadoActivo) {
+        dadosInactivosArray.get(0).newCara();
+        addDiceFromArray(dadosActivosArray, dadosInactivosArray.get(0), posicionDadoActivo);
+        removeDiceFromArray(0, dadosInactivosArray);
+    }
+
+    /**
+     * This method gets Puntaje.
+     *
+     * @return cumulative score
+     */
