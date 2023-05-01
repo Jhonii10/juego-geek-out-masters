@@ -152,6 +152,7 @@ import java.util.ArrayList;
         }
     }
 
+
 /**
      * This function runs the power of the dragon.
      */
@@ -165,8 +166,7 @@ import java.util.ArrayList;
         }
     }
 
-    
-/**
+    /**
      * This function runs the power of the meeple.
      *
      * @param posicionDadoActivo
@@ -209,8 +209,4 @@ import java.util.ArrayList;
         removeDiceFromArray(0, dadosInactivosArray);
     }
 
-    /**
-     * This method gets Puntaje.
-     *
-     * @return cumulative score
-     */
+  
