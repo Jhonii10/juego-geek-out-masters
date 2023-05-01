@@ -44,4 +44,53 @@ import java.util.ArrayList;
         determinateDadosActivos();
         determinateDadosInactivos();
         estadoToString = new String[7];
-    }}
+    }
+
+    This function addes the active dices an DadosActivos array.
+     */
+
+    public void determinateDadosActivos() {
+        dadosActivosArray.add(dado1);
+        dadosActivosArray.add(dado2);
+        dadosActivosArray.add(dado3);
+        dadosActivosArray.add(dado4);
+        dadosActivosArray.add(dado5);
+        dadosActivosArray.add(dado6);
+        dadosActivosArray.add(dado7);
+    }
+
+    /**
+     * This function addes the active dices an DadosActivos array.
+     */
+
+    public void determinateDadosInactivos() {
+        dadosInactivosArray.add(dado8);
+        dadosInactivosArray.add(dado9);
+        dadosInactivosArray.add(dado10);
+    }
+
+    public void removeDiceFromArray(int posicionDado, ArrayList<Dados> array) {
+        array.remove(posicionDado);
+    }
+
+    /**
+     * This function adds dice to the array at a given position.
+     *
+     * @param array
+     * @param dado
+     * @param posicion
+     */
+    public void addDiceFromArray(ArrayList<Dados> array, Dados dado, int posicion) {
+        array.add(posicion, dado);
+    }
+
+    /**
+     * This function adds dices to array.
+     *
+     * @param array
+     * @param dado
+     */
+
+    public void addDiceFromArray(ArrayList<Dados> array, Dados dado) {
+        array.add(dado);
+    }
