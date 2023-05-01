@@ -18,7 +18,7 @@ import java.util.ArrayList;
     private String[] estadoToString;
 
     /**
-     * Class Constructor
+     * Constructor
      */
 
     public ModelGeekOutMasters() {
