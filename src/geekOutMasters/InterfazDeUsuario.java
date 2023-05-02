@@ -2,6 +2,7 @@ package geekOutMasters;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * This class is used for ...
@@ -11,6 +12,26 @@ import java.awt.*;
 public class InterfazDeUsuario extends JFrame {
 
     private Header headerProject;
+    private JButton dado1, dado2, dado3, dado4, dado5, dado6, dado7, dado8, dado9, dado10;
+    private ImageIcon imageDado, imagenNuevoTamanho;
+    private Image imagenOtroTamanho;
+    private JButton ayuda, salir, nuevaRonda;
+    private JPanel panelDadosUtilizados, panelDadosInactivos, panelDadosActivos, panelEspacioEnBlanco1,
+            panelEspacioEnBlanco2, panelEspacioEnBlanco3, panelEspacioEnBlanco4, panelInstrucciones, panelAccionesDados;
+    private JTextArea numeroRonda, puntaje, instrucciones, mensajesAccionesDados;
+    private String mensajeFinal = "";
+    private String poder = "";
+    private String[] estadoToString;
+    private JScrollPane scroll;
+    private int ronda, puntos, seleccionDado, boton, unBoton, estado;
+    private ArrayList<JButton> botonesEnDadosUtilizados, botonesEnDadosInactivos, botonesEnDadosActivos;
+    private static final String MENSAJE_INICIO ="Bienvenido a Geek Out Masters \n";
+
+    private static final String INSTRUCCIONES = "Aqui van las instruciones del juego";
+
+    private Escucha escucha;
+
+    private  ModelGeekOutMasters game;
 
     /**
      * Constructor of GUI class
@@ -36,8 +57,60 @@ public class InterfazDeUsuario extends JFrame {
     private void initGUI() {
         //Set up JFrame Container's Layout
         //Create Listener Object and Control Object
+        escucha = new Escucha();
+        game = new ModelGeekOutMasters();
         //Set up JComponents
+        botonesEnDadosActivos = new ArrayList<JButton>();
+        botonesEnDadosInactivos = new ArrayList<JButton>();
+        botonesEnDadosUtilizados = new ArrayList<JButton>();
+
+        seleccionDado = 0;
+        unBoton=0;
+        estado=10;
+
+        estadoToString = new String[1];
+
+        panelInstrucciones = new JPanel();
+        panelInstrucciones.setPreferredSize(new Dimension(410,1005));
+        panelInstrucciones.setBackground(Color.WHITE);
+        panelInstrucciones.setBorder(BorderFactory.createTitledBorder("Instrucciones del juego."));
+        panelInstrucciones.setLayout(new BorderLayout());
+
+        instrucciones = new JTextArea();
+        instrucciones.setText(INSTRUCCIONES);
+        instrucciones.setLineWrap(true);
+        instrucciones.setPreferredSize(new Dimension(408, 1000));
+        instrucciones.setWrapStyleWord(true);
+        instrucciones.setLineWrap(true);
+        instrucciones.setEditable(false);
+
+        imageDado =new ImageIcon(getClass().getResource("/resources/7.png"));
+        imagenOtroTamanho =imageDado.getImage().getScaledInstance(60,60,Image.SCALE_SMOOTH);
+        imagenNuevoTamanho =new ImageIcon(imagenOtroTamanho);
+
+        dado1 = new JButton(imagenNuevoTamanho);
+        dado1.setBackground(Color.WHITE);
+        dado2 = new JButton(imagenNuevoTamanho);
+        dado2.setBackground(Color.WHITE);
+        dado3 = new JButton(imagenNuevoTamanho);
+        dado3.setBackground(Color.WHITE);
+        dado4 = new JButton(imagenNuevoTamanho);
+        dado4.setBackground(Color.WHITE);
+        dado5 = new JButton(imagenNuevoTamanho);
+        dado5.setBackground(Color.WHITE);
+        dado6 = new JButton(imagenNuevoTamanho);
+        dado6.setBackground(Color.WHITE);
+        dado7 = new JButton(imagenNuevoTamanho);
+        dado7.setBackground(Color.WHITE);
+        dado8 = new JButton(imagenNuevoTamanho);
+        dado8.setBackground(Color.WHITE);
+        dado9 = new JButton(imagenNuevoTamanho);
+        dado9.setBackground(Color.WHITE);
+        dado10 = new JButton(imagenNuevoTamanho);
+        dado10.setBackground(Color.WHITE);
+
         headerProject = new Header("GEEK OUT MASTERS", Color.white);
+
 
         this.add(headerProject,BorderLayout.NORTH); //Change this line if you change JFrame Container's Layout
     }
@@ -50,7 +123,7 @@ public class InterfazDeUsuario extends JFrame {
     public static void main(String[] args){
         EventQueue.invokeLater(() -> {
             InterfazDeUsuario miProjectGUI = new InterfazDeUsuario();
-            JOptionPane.showMessageDialog(null,"Bienvenido");
+            JOptionPane.showMessageDialog(null,MENSAJE_INICIO);
         });
     }
 
