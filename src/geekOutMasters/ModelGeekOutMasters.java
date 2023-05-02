@@ -258,3 +258,23 @@ import java.util.ArrayList;
         addDiceFromArray(dadosActivosArray, dadosInactivosArray.get(0), posicionDadoActivo);
         removeDiceFromArray(0, dadosInactivosArray);
     }
+/**
+     * This method gets Puntaje.
+     *
+     * @return cumulative score
+     */
+
+     public int getPuntaje() {
+        return puntaje;
+    }
+
+    /**
+     * This method gets the round.
+     *
+     * @return number round
+     */
+
+    public int getRonda() {
+        return ronda;
+    }
+}
