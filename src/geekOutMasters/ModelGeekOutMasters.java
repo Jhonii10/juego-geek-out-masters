@@ -140,6 +140,68 @@ import java.util.ArrayList;
                 puntaje = puntaje;
         }
     }   
+    /**
+     * This function determines how many 42 dices got were in the round.
+     */
+    public void roundPoints() {
+        dados42 = 0;
+        for (Dados unDado : dadosActivosArray) {
+            if (unDado.getCara() == 6) {
+                dados42++;
+            }
+        }
+        puntos += dados42;
+    }
+    /**
+     * This function goes to the next round.
+     */
+
+     public void nextRound() {
+        if (dadosActivosArray.size() != 0) {
+            dadosActivosArray.clear();
+        }
+        if (dadosInactivosArray.size() != 0) {
+            dadosInactivosArray.clear();
+        }
+        if (dadosUtilizadosArray.size() != 0) {
+            dadosUtilizadosArray.clear();
+        }
+        determinateDadosActivos();
+        determinateDadosInactivos();
+
+        ronda++;
+    }
+
+    /**
+     * This function ends the game.
+     *
+     * @return if you won or lost
+     */
+
+    public boolean endGame() {
+        if (ronda == 5) {
+            if (puntaje >= 30) {
+                terminar = true;//ganó
+            } else {
+                terminar = false;//perdió
+            }
+            ronda=0;
+            puntaje=0;
+            puntos=0;
+        }
+        return terminar;
+    }
+
+    /**
+     * This function moves the dice that is activated to the DadosUtilizados panel.
+     *
+     * @param posicionDadoActivo
+     */
+
+    public void powers(int posicionDadoActivo) {
+        addDiceFromArray(dadosUtilizadosArray, dadosActivosArray.get(posicionDadoActivo));
+        removeDiceFromArray(posicionDadoActivo, dadosActivosArray);
+    }
 
     /**
      * This function runs the power of the dragon.
