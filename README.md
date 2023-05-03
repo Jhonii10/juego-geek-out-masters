@@ -1,4 +1,4 @@
-###¡Bienvenido a Geek Out Masters!
+¡Bienvenido a Geek Out Masters!
 
 
 Geek Out Masters es un juego de trivia emocionante y desafiante para los verdaderos 
