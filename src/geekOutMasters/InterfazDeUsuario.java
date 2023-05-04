@@ -56,6 +56,9 @@ public class InterfazDeUsuario extends JFrame {
      */
     private void initGUI() {
         //Set up JFrame Container's Layout
+        this.getContentPane().setLayout(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+
         //Create Listener Object and Control Object
         escucha = new Escucha();
         game = new ModelGeekOutMasters();
@@ -109,21 +112,39 @@ public class InterfazDeUsuario extends JFrame {
         dado10 = new JButton(imagenNuevoTamanho);
         dado10.setBackground(Color.WHITE);
 
+
+
+
+        createHeader(constraints);
+    }
+
+    /**
+     * Creates a header for the application with a title and a background color.
+     * @param constraints Grid constraints for placing the header in the main container.
+     */
+    public void createHeader(GridBagConstraints constraints){
         headerProject = new Header("GEEK OUT MASTERS", Color.white);
+        constraints.gridx = 0; // Columna 0
+        constraints.gridy = 0; // fila 0
+        constraints.gridwidth = GridBagConstraints.REMAINDER; // ocupa todas las de la columna
+        constraints.fill = GridBagConstraints.HORIZONTAL; // 100% de ancho
+        constraints.weightx = 1.0;
+        constraints.weighty = 1.0;
+        constraints.anchor = GridBagConstraints.NORTH;
 
 
-        this.add(headerProject,BorderLayout.NORTH); //Change this line if you change JFrame Container's Layout
+        this.add(headerProject, constraints);
+
     }
 
     /**
      * Main process of the Java program
      * @param args Object used in order to send input data from command line when
-     *             the program is execute by console.
+     * the program is execute by console.
      */
     public static void main(String[] args){
         EventQueue.invokeLater(() -> {
             InterfazDeUsuario miProjectGUI = new InterfazDeUsuario();
-            JOptionPane.showMessageDialog(null,MENSAJE_INICIO);
         });
     }
 
