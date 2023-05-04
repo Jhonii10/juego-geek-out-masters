@@ -119,6 +119,8 @@ public class InterfazDeUsuario extends JFrame {
         createSpace1(constraints);
         createPlayButton(constraints);
         createHelpButton(constraints);
+        createPointCounter(constraints);
+        createRoundCount(constraints);
 
     }
 
@@ -166,7 +168,7 @@ public class InterfazDeUsuario extends JFrame {
         constraints.fill = GridBagConstraints.WEST;
         constraints.anchor = GridBagConstraints.LINE_START;
         constraints.insets = new Insets(10,10,10,10);
-
+    
         this.add(salir, constraints);
     }
 
@@ -185,6 +187,46 @@ public class InterfazDeUsuario extends JFrame {
 
         this.add(ayuda, constraints);
     }
+
+    public void createPointCounter(GridBagConstraints constraints) {
+        puntos = 0;
+    
+        puntaje = new JTextArea(1, 5);
+        puntaje.setPreferredSize(new Dimension(80, 20));
+        puntaje.setFont(new Font("SansSerif", Font.BOLD + Font.PLAIN, 14));
+        puntaje.setText("Puntaje: " + puntos);
+        puntaje.setBackground(Color.WHITE); 
+        puntaje.setForeground(Color.BLACK);
+        puntaje.setEditable(false);
+        puntaje.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+    
+        constraints.gridx = 2; 
+        constraints.gridy = 2;
+        constraints.gridwidth = 1;
+        constraints.fill = GridBagConstraints.NONE;
+        constraints.anchor = GridBagConstraints.WEST;
+        add(puntaje, constraints);
+    }
+
+    public void createRoundCount(GridBagConstraints constraints) {
+    ronda = 0;
+
+    numeroRonda = new JTextArea(1, 5); // cambiar el tamaño del JTextArea
+    numeroRonda.setPreferredSize(new Dimension(70, 20));
+    numeroRonda.setFont(new Font("SansSerif", Font.BOLD + Font.PLAIN, 14));
+    numeroRonda.setText("Ronda: " + ronda);
+    numeroRonda.setBackground(Color.WHITE); 
+    numeroRonda.setForeground(Color.BLACK); 
+    numeroRonda.setEditable(false);
+    numeroRonda.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2)); // establecer el borde en negro con grosor 2
+
+    constraints.gridx = 3;
+    constraints.gridy = 2;
+    constraints.gridwidth = 1;
+    constraints.fill = GridBagConstraints.NONE;
+    constraints.anchor = GridBagConstraints.WEST;
+    add(numeroRonda, constraints);
+}
 
 
 
