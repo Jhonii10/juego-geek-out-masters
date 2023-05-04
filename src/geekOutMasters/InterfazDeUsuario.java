@@ -116,6 +116,10 @@ public class InterfazDeUsuario extends JFrame {
 
 
         createHeader(constraints);
+        createSpace1(constraints);
+        createPlayButton(constraints);
+        createHelpButton(constraints);
+
     }
 
     /**
@@ -124,18 +128,66 @@ public class InterfazDeUsuario extends JFrame {
      */
     public void createHeader(GridBagConstraints constraints){
         headerProject = new Header("GEEK OUT MASTERS", Color.white);
-        constraints.gridx = 0; // Columna 0
-        constraints.gridy = 0; // fila 0
-        constraints.gridwidth = GridBagConstraints.REMAINDER; // ocupa todas las de la columna
-        constraints.fill = GridBagConstraints.HORIZONTAL; // 100% de ancho
-        constraints.weightx = 1.0;
-        constraints.weighty = 1.0;
-        constraints.anchor = GridBagConstraints.NORTH;
-
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.gridwidth = 7;
+        constraints.fill = GridBagConstraints.BOTH;
+        constraints.weightx = 0.1;
 
         this.add(headerProject, constraints);
 
     }
+
+
+    public void createSpace1(GridBagConstraints constraints) {
+        panelEspacioEnBlanco1 = new JPanel();
+        panelEspacioEnBlanco1.setOpaque(false);
+        panelEspacioEnBlanco1.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK));
+
+        constraints.gridx = 0;
+        constraints.gridy = 1;
+        constraints.gridwidth = 7;
+        constraints.gridheight = 1;
+
+
+
+        this.add(panelEspacioEnBlanco1, constraints);
+
+    }
+
+    public void createPlayButton(GridBagConstraints constraints) {
+        salir = new JButton("Play");
+        salir.setFont(new Font("SansSerif", Font.BOLD + Font.PLAIN, 18));
+        salir.setForeground(Color.WHITE);
+        salir.setBackground(new Color(255, 81, 51));
+        constraints.gridx = 0;
+        constraints.gridy = 1;
+        constraints.gridwidth = 1;
+        constraints.fill = GridBagConstraints.WEST;
+        constraints.anchor = GridBagConstraints.LINE_START;
+        constraints.insets = new Insets(10,10,10,10);
+
+        this.add(salir, constraints);
+    }
+
+    public void createHelpButton(GridBagConstraints constraints) {
+        ayuda = new JButton(" ? ");
+        ayuda.setFont(new Font("SansSerif", Font.BOLD + Font.PLAIN, 24));
+        ayuda.setForeground(Color.white);
+        ayuda.setBackground(new Color(0, 102, 255));
+        ayuda.setBorder(BorderFactory.createLineBorder(Color.YELLOW));
+        constraints.gridx = 6;
+        constraints.gridy = 1;
+        constraints.gridwidth = 1;
+        constraints.fill = GridBagConstraints.NONE;
+        constraints.anchor = GridBagConstraints.NORTHEAST;
+        constraints.insets = new Insets(10,10,10,10);
+
+        this.add(ayuda, constraints);
+    }
+
+
+
 
     /**
      * Main process of the Java program
