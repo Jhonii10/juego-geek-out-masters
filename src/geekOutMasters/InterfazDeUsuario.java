@@ -121,6 +121,7 @@ public class InterfazDeUsuario extends JFrame {
         createHelpButton(constraints);
         createPointCounter(constraints);
         createRoundCount(constraints);
+        createNewRoundButton(constraints);
 
     }
 
@@ -228,7 +229,22 @@ public class InterfazDeUsuario extends JFrame {
     add(numeroRonda, constraints);
 }
 
+public void createNewRoundButton(GridBagConstraints constraints)
+    {
+        nuevaRonda = new JButton("NEXT");
+        nuevaRonda.setFont(new Font("SansSerif", Font.BOLD + Font.PLAIN, 14));
+        nuevaRonda.setForeground(Color.BLACK);
+        nuevaRonda.setBackground(Color.WHITE);
+        nuevaRonda.setFocusable(true);
+        nuevaRonda.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
 
+        constraints.gridx = 0;
+        constraints.gridy = 12;
+        constraints.gridwidth = 7;
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.anchor = GridBagConstraints.CENTER;
+        this.add(nuevaRonda, constraints);
+    }
 
 
     /**
