@@ -123,6 +123,7 @@ public class InterfazDeUsuario extends JFrame {
         createRoundCount(constraints);
         createNewRoundButton(constraints);
         createDadosUtilizadosPane(constraints);
+        createDadosInactivosPane(constraints);
         
 
     }
@@ -262,6 +263,27 @@ public void createNewRoundButton(GridBagConstraints constraints)
         constraints.anchor = GridBagConstraints.LINE_END;
 
         this.add(panelDadosUtilizados, constraints);
+    }
+
+    public void createDadosInactivosPane(GridBagConstraints constraints) {
+        panelDadosInactivos = new JPanel();
+        panelDadosInactivos.setMinimumSize(new Dimension(500, 200));
+        panelDadosInactivos.setBorder(BorderFactory.createTitledBorder("Dados inactivos"));
+        panelDadosInactivos.setBackground(Color.WHITE);
+
+        botonesEnDadosInactivos.add(dado8);
+        botonesEnDadosInactivos.add(dado9);
+        botonesEnDadosInactivos.add(dado10);
+
+        constraints.gridx = 2;
+        constraints.gridy = 8;
+        constraints.gridwidth = 5;
+        constraints.fill = GridBagConstraints.NONE;
+        constraints.anchor = GridBagConstraints.LINE_END;
+        
+        this.add(panelDadosInactivos, constraints);
+
+        
     }
 
 
