@@ -7,6 +7,7 @@ import java.util.ArrayList;
 /**
  * This class is used for ...
  * @autor Jhoni ipia
+ * @autor Alexandra Lerma
  * @version v.1.0.0 date:21/03/2023
  */
 public class InterfazDeUsuario extends JFrame {
@@ -124,6 +125,8 @@ public class InterfazDeUsuario extends JFrame {
         createNewRoundButton(constraints);
         createDadosUtilizadosPane(constraints);
         createDadosInactivosPane(constraints);
+        createDadosActivosPane(constraints);
+        createAccionesDadosPane(constraints);
         
 
     }
@@ -280,10 +283,59 @@ public void createNewRoundButton(GridBagConstraints constraints)
         constraints.gridwidth = 5;
         constraints.fill = GridBagConstraints.NONE;
         constraints.anchor = GridBagConstraints.LINE_END;
-        
-        this.add(panelDadosInactivos, constraints);
 
-        
+        this.add(panelDadosInactivos, constraints);
+ 
+    }
+
+    public void createAccionesDadosPane(GridBagConstraints constraints)
+    {
+        panelAccionesDados = new JPanel();
+        panelAccionesDados.setBorder(BorderFactory.createTitledBorder("Acciones que está realizando"));
+        panelAccionesDados.setMinimumSize(new Dimension(400, 200));
+        panelAccionesDados.setBackground(Color.WHITE);
+
+        mensajesAccionesDados = new JTextArea(20,30);
+        mensajesAccionesDados.setFont(new Font("SansSerif", Font.BOLD, 12));
+        mensajesAccionesDados.setWrapStyleWord(true);
+        mensajesAccionesDados.setLineWrap(true);
+        mensajesAccionesDados.setEditable(false);
+
+        constraints.gridx = 0;
+        constraints.gridy = 4;
+        constraints.gridwidth = 3;
+        constraints.gridheight = 1;
+        constraints.fill = GridBagConstraints.NONE;
+        constraints.anchor = GridBagConstraints.LINE_START;
+
+    
+        panelAccionesDados.add(mensajesAccionesDados);
+        this.add(panelAccionesDados, constraints);
+    }
+
+    public void createDadosActivosPane(GridBagConstraints constraints)
+    {
+        panelDadosActivos = new JPanel();
+        panelDadosActivos.setPreferredSize(new Dimension(800, 600));
+        panelDadosActivos.setBorder(BorderFactory.createTitledBorder("Dados activos"));
+        panelDadosActivos.setBackground(Color.WHITE);
+
+        botonesEnDadosActivos.add(dado1);
+        botonesEnDadosActivos.add(dado2);
+        botonesEnDadosActivos.add(dado3);
+        botonesEnDadosActivos.add(dado4);
+        botonesEnDadosActivos.add(dado5);
+        botonesEnDadosActivos.add(dado6);
+        botonesEnDadosActivos.add(dado7);
+
+        constraints.gridx = 0;
+        constraints.gridy = 8;
+        constraints.gridwidth = 5;
+        constraints.fill = GridBagConstraints.NONE;
+        constraints.anchor = GridBagConstraints.LINE_START;
+
+        this.add(panelDadosActivos, constraints);
+
     }
 
 
@@ -305,3 +357,4 @@ public void createNewRoundButton(GridBagConstraints constraints)
 
     }
 }
+
