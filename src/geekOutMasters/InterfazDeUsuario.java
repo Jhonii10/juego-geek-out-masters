@@ -122,6 +122,8 @@ public class InterfazDeUsuario extends JFrame {
         createPointCounter(constraints);
         createRoundCount(constraints);
         createNewRoundButton(constraints);
+        createDadosUtilizadosPane(constraints);
+        
 
     }
 
@@ -244,6 +246,22 @@ public void createNewRoundButton(GridBagConstraints constraints)
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.anchor = GridBagConstraints.CENTER;
         this.add(nuevaRonda, constraints);
+    }
+
+    public void createDadosUtilizadosPane(GridBagConstraints constraints) {
+        panelDadosUtilizados = new JPanel();
+        panelDadosUtilizados.setMinimumSize(new Dimension(500, 200));
+        panelDadosUtilizados.setBorder(BorderFactory.createTitledBorder("Dados utilizados"));
+        panelDadosUtilizados.setBackground(Color.WHITE);
+        
+        constraints.gridx = 4;
+        constraints.gridy = 4;
+        constraints.gridwidth = 3;
+        constraints.gridheight = 1;
+        constraints.fill = GridBagConstraints.NONE;
+        constraints.anchor = GridBagConstraints.LINE_END;
+
+        this.add(panelDadosUtilizados, constraints);
     }
 
 
