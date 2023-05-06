@@ -7,6 +7,7 @@ import java.util.ArrayList;
 /**
  * This class is used for ...
  * @autor Jhoni ipia
+ * @autor Alexandra Lerma
  * @version v.1.0.0 date:21/03/2023
  */
 public class InterfazDeUsuario extends JFrame {
@@ -122,12 +123,19 @@ public class InterfazDeUsuario extends JFrame {
         createPointCounter(constraints);
         createRoundCount(constraints);
         createNewRoundButton(constraints);
+
         createSpace2(constraints);
         createDadosUtilizadosPane(constraints);
         createDadosInactivosPane(constraints);
-        createSpace3(constraints);
+        //createSpace3(constraints);
         createAccionesDadosPane(constraints);
         createDadosActivosPane(constraints);
+        createDadosUtilizadosPane(constraints);
+        createDadosInactivosPane(constraints);
+        createDadosActivosPane(constraints);
+        createAccionesDadosPane(constraints);
+        
+
 
     }
 
@@ -252,34 +260,18 @@ public void createNewRoundButton(GridBagConstraints constraints)
         this.add(nuevaRonda, constraints);
     }
 
-
-    public void createSpace2(GridBagConstraints constraints) {
-        panelEspacioEnBlanco2 = new JPanel();
-        panelEspacioEnBlanco2.setBorder(BorderFactory.createLineBorder(Color.red));
-
-        constraints.gridx = 0;
-        constraints.gridy = 3;
-        constraints.gridwidth = 7;
-        constraints.gridheight = 1;
-
-        this.add(panelEspacioEnBlanco2, constraints);
-    }
-
-
     public void createDadosUtilizadosPane(GridBagConstraints constraints) {
         panelDadosUtilizados = new JPanel();
+        panelDadosUtilizados.setMinimumSize(new Dimension(500, 200));
         panelDadosUtilizados.setBorder(BorderFactory.createTitledBorder("Dados utilizados"));
         panelDadosUtilizados.setBackground(Color.WHITE);
-        panelDadosUtilizados.setMinimumSize(new Dimension(500, 200)); // definir el min-width
-
-        constraints.gridx = 0;
+        
+        constraints.gridx = 4;
         constraints.gridy = 4;
         constraints.gridwidth = 3;
         constraints.gridheight = 1;
-        constraints.fill = GridBagConstraints.BOTH; // usar BOTH para que ocupe el 50% de la pantalla
-        constraints.weightx = 0.5;
-        constraints.weighty = 0.5; // asignar un peso de 0.5 para que ocupe el 50% de la pantalla
-        constraints.anchor = GridBagConstraints.LINE_START;
+        constraints.fill = GridBagConstraints.NONE;
+        constraints.anchor = GridBagConstraints.LINE_END;
 
         this.add(panelDadosUtilizados, constraints);
     }
@@ -294,31 +286,14 @@ public void createNewRoundButton(GridBagConstraints constraints)
         botonesEnDadosInactivos.add(dado9);
         botonesEnDadosInactivos.add(dado10);
 
-        constraints.gridx = 4;
-        constraints.gridy = 4;
-        constraints.gridwidth = 3;
-        constraints.gridheight = 1;
-        constraints.fill = GridBagConstraints.BOTH;
-        constraints.weightx = 0.7;
-        constraints.weighty = 0.7;
+        constraints.gridx = 2;
+        constraints.gridy = 8;
+        constraints.gridwidth = 5;
+        constraints.fill = GridBagConstraints.NONE;
         constraints.anchor = GridBagConstraints.LINE_END;
 
         this.add(panelDadosInactivos, constraints);
-
-        //determinateBotonesInactivos();
-    }
-
-    public void createSpace3(GridBagConstraints constraints)
-    {
-        panelEspacioEnBlanco3 = new JPanel();
-        panelEspacioEnBlanco2.setBorder(BorderFactory.createLineBorder(Color.red));
-
-        constraints.gridx = 0;
-        constraints.gridy = 7;
-        constraints.gridwidth = 7;
-        constraints.gridheight = 1;
-
-        this.add(panelEspacioEnBlanco3, constraints);
+ 
     }
 
     public void createAccionesDadosPane(GridBagConstraints constraints)
@@ -335,12 +310,13 @@ public void createNewRoundButton(GridBagConstraints constraints)
         mensajesAccionesDados.setEditable(false);
 
         constraints.gridx = 0;
-        constraints.gridy = 8;
-        constraints.gridwidth = 5;
+        constraints.gridy = 4;
+        constraints.gridwidth = 3;
+        constraints.gridheight = 1;
         constraints.fill = GridBagConstraints.NONE;
         constraints.anchor = GridBagConstraints.LINE_START;
 
-        //mensajesAccionesDados.setText(getEstadoToString()[0]);
+    
         panelAccionesDados.add(mensajesAccionesDados);
         this.add(panelAccionesDados, constraints);
     }
@@ -348,7 +324,7 @@ public void createNewRoundButton(GridBagConstraints constraints)
     public void createDadosActivosPane(GridBagConstraints constraints)
     {
         panelDadosActivos = new JPanel();
-        panelDadosActivos.setPreferredSize(new Dimension(600, 200));
+        panelDadosActivos.setPreferredSize(new Dimension(800, 600));
         panelDadosActivos.setBorder(BorderFactory.createTitledBorder("Dados activos"));
         panelDadosActivos.setBackground(Color.WHITE);
 
@@ -360,20 +336,28 @@ public void createNewRoundButton(GridBagConstraints constraints)
         botonesEnDadosActivos.add(dado6);
         botonesEnDadosActivos.add(dado7);
 
-        constraints.gridx = 2;
+        constraints.gridx = 0;
         constraints.gridy = 8;
         constraints.gridwidth = 5;
         constraints.fill = GridBagConstraints.NONE;
-        constraints.anchor = GridBagConstraints.LINE_END;
+        constraints.anchor = GridBagConstraints.LINE_START;
 
         this.add(panelDadosActivos, constraints);
 
-
-        //determinateBotonesActivos();
     }
 
 
+    public void createSpace2(GridBagConstraints constraints) {
+        panelEspacioEnBlanco2 = new JPanel();
+        panelEspacioEnBlanco2.setBorder(BorderFactory.createLineBorder(Color.red));
 
+        constraints.gridx = 0;
+        constraints.gridy = 3;
+        constraints.gridwidth = 7;
+        constraints.gridheight = 1;
+
+        this.add(panelEspacioEnBlanco2, constraints);
+    }
 
 
 
@@ -396,3 +380,4 @@ public void createNewRoundButton(GridBagConstraints constraints)
 
     }
 }
+
