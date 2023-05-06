@@ -377,6 +377,27 @@ public class InterfazDeUsuario extends JFrame {
          rePaintDadosActivos();
      }*/
 
+      /**
+     * This function creates the Nueva Ronda button.
+     * @param constraints
+     */
+    public void createNewRoundButton(GridBagConstraints constraints)
+    {
+        nuevaRonda = new JButton("NUEVA RONDA");
+        nuevaRonda.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,20));
+        nuevaRonda.setForeground(Color.WHITE);
+        //nuevaRonda.addMouseListener(escucha);
+        nuevaRonda.setBackground(new Color(0, 0, 0));
+        nuevaRonda.setFocusable(true);
+
+        constraints.gridx = 2;
+        constraints.gridy = 5;
+        constraints.gridwidth = 2;
+        constraints.fill = GridBagConstraints.BOTH;
+        constraints.anchor = GridBagConstraints.CENTER;
+        this.add(nuevaRonda, constraints);
+    }
+
      /**
      * This function updates DadosActivos panel.
      */
@@ -562,26 +583,7 @@ public class InterfazDeUsuario extends JFrame {
  
  
     
-    /**
-     * This function creates the Nueva Ronda button.
-     * @param constraints
-     */
-    public void createNewRoundButton(GridBagConstraints constraints)
-    {
-        nuevaRonda = new JButton("NUEVA RONDA");
-        nuevaRonda.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,20));
-        nuevaRonda.setForeground(Color.WHITE);
-        //nuevaRonda.addMouseListener(escucha);
-        nuevaRonda.setBackground(new Color(0, 0, 0));
-        nuevaRonda.setFocusable(true);
-
-        constraints.gridx = 2;
-        constraints.gridy = 5;
-        constraints.gridwidth = 2;
-        constraints.fill = GridBagConstraints.BOTH;
-        constraints.anchor = GridBagConstraints.CENTER;
-        this.add(nuevaRonda, constraints);
-    }
+   
 
 
     /**
