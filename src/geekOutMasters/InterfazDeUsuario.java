@@ -459,6 +459,106 @@ public class InterfazDeUsuario extends JFrame {
         revalidate();
         repaint();
     } */
+
+    /**
+     * This function updates DadosUtilizados panel.
+     
+    private void rePaintDadosUtilizados()
+    {
+        panelDadosUtilizados.removeAll();
+
+        panelDadosUtilizados.setPreferredSize(new Dimension(800, 600));
+        panelDadosUtilizados.setLayout(new GridBagLayout());
+        GridBagConstraints constraintsPanelUtilizados = new GridBagConstraints();
+
+        for (boton = 0; boton < botonesEnDadosUtilizados.size(); boton++) {
+            switch (boton) {
+                case 0:
+                    constraintsPanelUtilizados.gridx = 0;
+                    constraintsPanelUtilizados.gridy = 4;
+                    constraintsPanelUtilizados.gridwidth = 1;
+                    constraintsPanelUtilizados.fill = GridBagConstraints.NONE;
+                    constraintsPanelUtilizados.anchor = GridBagConstraints.CENTER;
+
+                    panelDadosUtilizados.add(botonesEnDadosUtilizados.get(0), constraintsPanelUtilizados);
+                    break;
+                case 1:
+                    constraintsPanelUtilizados.gridx = 1;
+                    constraintsPanelUtilizados.gridy = 4;
+                    constraintsPanelUtilizados.gridwidth = 1;
+                    constraintsPanelUtilizados.fill = GridBagConstraints.NONE;
+                    constraintsPanelUtilizados.anchor = GridBagConstraints.CENTER;
+
+                    panelDadosUtilizados.add(botonesEnDadosUtilizados.get(1), constraintsPanelUtilizados);
+                    break;
+                case 2:
+                    constraintsPanelUtilizados.gridx = 2;
+                    constraintsPanelUtilizados.gridy = 4;
+                    constraintsPanelUtilizados.gridwidth = 1;
+                    constraintsPanelUtilizados.fill = GridBagConstraints.NONE;
+                    constraintsPanelUtilizados.anchor = GridBagConstraints.CENTER;
+
+                    panelDadosUtilizados.add(botonesEnDadosUtilizados.get(2), constraintsPanelUtilizados);
+                    break;
+                case 3:
+                    constraintsPanelUtilizados.gridx = 0;
+                    constraintsPanelUtilizados.gridy = 5;
+                    constraintsPanelUtilizados.gridwidth = 1;
+                    constraintsPanelUtilizados.fill = GridBagConstraints.NONE;
+                    constraintsPanelUtilizados.anchor = GridBagConstraints.CENTER;
+
+                    panelDadosUtilizados.add(botonesEnDadosUtilizados.get(3), constraintsPanelUtilizados);
+                    break;
+                case 4:
+                    constraintsPanelUtilizados.gridx = 1;
+                    constraintsPanelUtilizados.gridy = 5;
+                    constraintsPanelUtilizados.gridwidth = 1;
+                    constraintsPanelUtilizados.fill = GridBagConstraints.NONE;
+                    constraintsPanelUtilizados.anchor = GridBagConstraints.CENTER;
+
+                    panelDadosUtilizados.add(botonesEnDadosUtilizados.get(4), constraintsPanelUtilizados);
+                    break;
+                case 5:
+                    constraintsPanelUtilizados.gridx = 2;
+                    constraintsPanelUtilizados.gridy = 5;
+                    constraintsPanelUtilizados.gridwidth = 1;
+                    constraintsPanelUtilizados.fill = GridBagConstraints.NONE;
+                    constraintsPanelUtilizados.anchor = GridBagConstraints.CENTER;
+
+                    panelDadosUtilizados.add(botonesEnDadosUtilizados.get(5), constraintsPanelUtilizados);
+                    break;
+                case 6:
+                    constraintsPanelUtilizados.gridx = 0;
+                    constraintsPanelUtilizados.gridy = 6;
+                    constraintsPanelUtilizados.gridwidth = 1;
+                    constraintsPanelUtilizados.fill = GridBagConstraints.NONE;
+                    constraintsPanelUtilizados.anchor = GridBagConstraints.CENTER;
+
+                    panelDadosUtilizados.add(botonesEnDadosUtilizados.get(6), constraintsPanelUtilizados);
+                    break;
+                case 7:
+                    constraintsPanelUtilizados.gridx = 1;
+                    constraintsPanelUtilizados.gridy = 6;
+                    constraintsPanelUtilizados.gridwidth = 1;
+                    constraintsPanelUtilizados.fill = GridBagConstraints.NONE;
+                    constraintsPanelUtilizados.anchor = GridBagConstraints.CENTER;
+
+                    panelDadosUtilizados.add(botonesEnDadosUtilizados.get(7), constraintsPanelUtilizados);
+                    break;
+                case 8:
+                    constraintsPanelUtilizados.gridx = 2;
+                    constraintsPanelUtilizados.gridy = 6;
+                    constraintsPanelUtilizados.gridwidth = 1;
+                    constraintsPanelUtilizados.fill = GridBagConstraints.NONE;
+                    constraintsPanelUtilizados.anchor = GridBagConstraints.CENTER;
+
+                    panelDadosUtilizados.add(botonesEnDadosUtilizados.get(8), constraintsPanelUtilizados);
+                    break;
+            }
+        }
+        revalidate();
+        panelDadosUtilizados.updateUI();
+    }*/
  
  
     
