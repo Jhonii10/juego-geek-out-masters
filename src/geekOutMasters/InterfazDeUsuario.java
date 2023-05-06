@@ -27,7 +27,42 @@ public class InterfazDeUsuario extends JFrame {
     private ArrayList<JButton> botonesEnDadosUtilizados, botonesEnDadosInactivos, botonesEnDadosActivos;
     private static final String MENSAJE_INICIO ="Bienvenido a Geek Out Masters \n";
 
-    private static final String INSTRUCCIONES = "Aqui van las instruciones del juego";
+    private static final String INSTRUCCIONES = "Lo primero que debes saber es que los dados aparecen aleatoriamente"
+    + " después de presionar \"Nueva ronda.\"\n"
+    + "\nDe los 10 dados que trae el juego se toman 3 y se colocan en el sector de \"Dados\""
+    + "Inactivos\". Los otros 7 dados se tiran y pasan a ser los \"Dados Activos\".\n"
+    + "\nSe van eligiendo los dados a utilizar según las habilidades de sus caras y se pasan"
+    + " al sector de \"Dados Utilizados\".\n"
+    + "\nSi como último dado activo queda un Dragón, se perderán todos los puntos acumulados.\n"
+    + "\nEste juego lo jugará un único jugador y ganará si logra sumar 30 puntos en 5 rondas"
+    + " consecutivas de juego.\n"
+    + "\nTienes disponibles los siguientes dados:\n"
+    + "\n 1. El Meeple permite relanzar otro dado en juego, es decir, de la sección dados activos.\n"
+    + "\n 2. La Nave Espacial envía un dado no usado (de la sección dados activos) a la sección de"
+    + "  dados inactivos.\n"
+    + "\n 3. El Superhéroe permite que cualquier dado no usado (sección dados activos) sea volteado"
+    + "  y colocado en su cara opuesta.\n"
+    + "\n 4. El Corazón permite tomar un dado de la sección de dados inactivos y lanzarlo para que"
+    + "  sea un nuevo dado activo.\n"
+    + "\n 5. El Dragón es la cara que se quiere evitar, ya que, si al final de la ronda es el último"
+    + "  dado activo que queda se habrán perdido todos los puntos ganados y acumulados.\n"
+    + "\n 6. 42 es la cara que permite sumar puntos al final de la ronda.\n"
+    + "\nEs importante que sepas que las caras contrarias del dado corresponden a sus colores, es"
+    + " decir, la cara contraria al Corazón es el 42, ya que, tienen el mismo color (rojo); la cara"
+    + " contraria del Meeple es la Nave Espacial y la cara contraria del Superhéroe es el Dragón.\n"
+    + "\nPara activar el poder de un dado, debes presionar el dado que vas a activar y luego presionar"
+    + " el dado al que le vas a aplicar el poder.\n"
+    + "\nAl finalizar cada turno o ronda se cuenta la cantidad de dados con cara 42 en el área de dados"
+    + " puntuados teniendo en cuenta las reglas de la siguiente imagen. Se debe tener presente que, en"
+    + " cualquier ronda, existe el riesgo de quedar con un dragón en la zona de dados activos, en cuyo"
+    + " caso, los puntos dela ronda como los puntos acumulados (si se han jugado varias rondas) son"
+    + " eliminados, quedando con cero puntos.\n"
+    + "\nA continuación se listan las reglas para la asignación de puntos:\n"
+    + "\n1 Dado 42 -> 1 Punto       6 Dados 42 -> 21 Puntos\n"
+    + "\n2 Dados 42 -> 3 Puntos     7 Dados 42 -> 28 Puntos\n"
+    + "\n3 Dados 42 -> 6 Puntos     8 Dados 42 -> 36 Puntos\n"
+    + "\n4 Dados 42 -> 10 Puntos    9 Dados 42 -> 45 Puntos\n"
+    + "\n5 Dados 42 -> 15 Puntos    10 Dados 42 -> 55 Puntos\n";
 
     private Escucha escucha;
 
