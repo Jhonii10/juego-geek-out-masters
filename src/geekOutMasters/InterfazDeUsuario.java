@@ -122,6 +122,12 @@ public class InterfazDeUsuario extends JFrame {
         createPointCounter(constraints);
         createRoundCount(constraints);
         createNewRoundButton(constraints);
+        createSpace2(constraints);
+        createDadosUtilizadosPane(constraints);
+        createDadosInactivosPane(constraints);
+        createSpace3(constraints);
+        createAccionesDadosPane(constraints);
+        createDadosActivosPane(constraints);
 
     }
 
@@ -245,6 +251,131 @@ public void createNewRoundButton(GridBagConstraints constraints)
         constraints.anchor = GridBagConstraints.CENTER;
         this.add(nuevaRonda, constraints);
     }
+
+
+    public void createSpace2(GridBagConstraints constraints) {
+        panelEspacioEnBlanco2 = new JPanel();
+        panelEspacioEnBlanco2.setBorder(BorderFactory.createLineBorder(Color.red));
+
+        constraints.gridx = 0;
+        constraints.gridy = 3;
+        constraints.gridwidth = 7;
+        constraints.gridheight = 1;
+
+        this.add(panelEspacioEnBlanco2, constraints);
+    }
+
+
+    public void createDadosUtilizadosPane(GridBagConstraints constraints) {
+        panelDadosUtilizados = new JPanel();
+        panelDadosUtilizados.setBorder(BorderFactory.createTitledBorder("Dados utilizados"));
+        panelDadosUtilizados.setBackground(Color.WHITE);
+        panelDadosUtilizados.setMinimumSize(new Dimension(500, 200)); // definir el min-width
+
+        constraints.gridx = 0;
+        constraints.gridy = 4;
+        constraints.gridwidth = 3;
+        constraints.gridheight = 1;
+        constraints.fill = GridBagConstraints.BOTH; // usar BOTH para que ocupe el 50% de la pantalla
+        constraints.weightx = 0.5;
+        constraints.weighty = 0.5; // asignar un peso de 0.5 para que ocupe el 50% de la pantalla
+        constraints.anchor = GridBagConstraints.LINE_START;
+
+        this.add(panelDadosUtilizados, constraints);
+    }
+
+    public void createDadosInactivosPane(GridBagConstraints constraints) {
+        panelDadosInactivos = new JPanel();
+        panelDadosInactivos.setMinimumSize(new Dimension(500, 200));
+        panelDadosInactivos.setBorder(BorderFactory.createTitledBorder("Dados inactivos"));
+        panelDadosInactivos.setBackground(Color.WHITE);
+
+        botonesEnDadosInactivos.add(dado8);
+        botonesEnDadosInactivos.add(dado9);
+        botonesEnDadosInactivos.add(dado10);
+
+        constraints.gridx = 4;
+        constraints.gridy = 4;
+        constraints.gridwidth = 3;
+        constraints.gridheight = 1;
+        constraints.fill = GridBagConstraints.BOTH;
+        constraints.weightx = 0.7;
+        constraints.weighty = 0.7;
+        constraints.anchor = GridBagConstraints.LINE_END;
+
+        this.add(panelDadosInactivos, constraints);
+
+        //determinateBotonesInactivos();
+    }
+
+    public void createSpace3(GridBagConstraints constraints)
+    {
+        panelEspacioEnBlanco3 = new JPanel();
+        panelEspacioEnBlanco2.setBorder(BorderFactory.createLineBorder(Color.red));
+
+        constraints.gridx = 0;
+        constraints.gridy = 7;
+        constraints.gridwidth = 7;
+        constraints.gridheight = 1;
+
+        this.add(panelEspacioEnBlanco3, constraints);
+    }
+
+    public void createAccionesDadosPane(GridBagConstraints constraints)
+    {
+        panelAccionesDados = new JPanel();
+        panelAccionesDados.setBorder(BorderFactory.createTitledBorder("Acciones que está realizando"));
+        panelAccionesDados.setMinimumSize(new Dimension(400, 200));
+        panelAccionesDados.setBackground(Color.WHITE);
+
+        mensajesAccionesDados = new JTextArea(20,30);
+        mensajesAccionesDados.setFont(new Font("SansSerif", Font.BOLD, 12));
+        mensajesAccionesDados.setWrapStyleWord(true);
+        mensajesAccionesDados.setLineWrap(true);
+        mensajesAccionesDados.setEditable(false);
+
+        constraints.gridx = 0;
+        constraints.gridy = 8;
+        constraints.gridwidth = 5;
+        constraints.fill = GridBagConstraints.NONE;
+        constraints.anchor = GridBagConstraints.LINE_START;
+
+        //mensajesAccionesDados.setText(getEstadoToString()[0]);
+        panelAccionesDados.add(mensajesAccionesDados);
+        this.add(panelAccionesDados, constraints);
+    }
+
+    public void createDadosActivosPane(GridBagConstraints constraints)
+    {
+        panelDadosActivos = new JPanel();
+        panelDadosActivos.setPreferredSize(new Dimension(600, 200));
+        panelDadosActivos.setBorder(BorderFactory.createTitledBorder("Dados activos"));
+        panelDadosActivos.setBackground(Color.WHITE);
+
+        botonesEnDadosActivos.add(dado1);
+        botonesEnDadosActivos.add(dado2);
+        botonesEnDadosActivos.add(dado3);
+        botonesEnDadosActivos.add(dado4);
+        botonesEnDadosActivos.add(dado5);
+        botonesEnDadosActivos.add(dado6);
+        botonesEnDadosActivos.add(dado7);
+
+        constraints.gridx = 2;
+        constraints.gridy = 8;
+        constraints.gridwidth = 5;
+        constraints.fill = GridBagConstraints.NONE;
+        constraints.anchor = GridBagConstraints.LINE_END;
+
+        this.add(panelDadosActivos, constraints);
+
+
+        //determinateBotonesActivos();
+    }
+
+
+
+
+
 
 
     /**
