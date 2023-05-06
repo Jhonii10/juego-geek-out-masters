@@ -123,6 +123,8 @@ public class InterfazDeUsuario extends JFrame {
         createHelpButton(constraints);
         createPointCounter(constraints);
         createRoundCount(constraints);
+        createDadosUtilizadosPane(constraints);
+        createDadosInactivosPane(constraints);
 
 
     }
@@ -217,15 +219,56 @@ public class InterfazDeUsuario extends JFrame {
         add(numeroRonda, constraints);
     }
 
+//------------------------------------------------------------------------------------------------------------->
 
+    public void createDadosUtilizadosPane(GridBagConstraints constraints) {
+        panelDadosUtilizados = new JPanel();
+        panelDadosUtilizados.setPreferredSize(new Dimension(350, 150)); // Cambia el tamaño mínimo del panel;
+        panelDadosUtilizados.setBorder(BorderFactory.createTitledBorder("Dados utilizados"));
+        panelDadosUtilizados.setBackground(Color.WHITE);
+        //panelDadosUtilizados.removeMouseListener(escucha);
+        //rePaintDadosUtilizados();
 
+        constraints.gridx = 2;
+        constraints.gridy = 3;
+        constraints.gridwidth = 1;
+        constraints.fill = GridBagConstraints.BOTH;
+        constraints.anchor = GridBagConstraints.CENTER;
+        constraints.insets = new Insets(10,10,10,10);;
 
+        this.add(panelDadosUtilizados, constraints);
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------
 
     /**
-     * Main process of the Java program
-     * @param args Object used in order to send input data from command line when
-     * the program is execute by console.
+     * This function creates the DadosInactivos panel.
+     * @param constraints
      */
+
+    public void createDadosInactivosPane(GridBagConstraints constraints) {
+        panelDadosInactivos = new JPanel();
+        panelDadosInactivos.setPreferredSize(new Dimension(350, 150)); // Cambia el tamaño mínimo del panel
+        panelDadosInactivos.setBorder(BorderFactory.createTitledBorder("Dados inactivos"));
+        panelDadosInactivos.setBackground(Color.WHITE);
+
+        constraints.gridx = 3;
+        constraints.gridy = 3;
+        constraints.gridwidth = 1;
+        constraints.fill = GridBagConstraints.BOTH;
+        constraints.anchor = GridBagConstraints.CENTER;
+        constraints.insets = new Insets(10,10,10,10);
+
+        this.add(panelDadosInactivos, constraints);
+
+    }
+
+
+        /**
+         * Main process of the Java program
+         * @param args Object used in order to send input data from command line when
+         * the program is execute by console.
+         */
     public static void main(String[] args){
         EventQueue.invokeLater(() -> {
             InterfazDeUsuario miProjectGUI = new InterfazDeUsuario();
