@@ -7,6 +7,7 @@ import java.util.ArrayList;
 /**
  * This class is used for ...
  * @autor Jhoni ipia
+ * @autor Alexandra Lerma
  * @version v.1.0.0 date:21/03/2023
  */
 public class InterfazDeUsuario extends JFrame {
@@ -119,6 +120,22 @@ public class InterfazDeUsuario extends JFrame {
         createSpace1(constraints);
         createPlayButton(constraints);
         createHelpButton(constraints);
+        createPointCounter(constraints);
+        createRoundCount(constraints);
+        createNewRoundButton(constraints);
+
+        createSpace2(constraints);
+        createDadosUtilizadosPane(constraints);
+        createDadosInactivosPane(constraints);
+        //createSpace3(constraints);
+        createAccionesDadosPane(constraints);
+        createDadosActivosPane(constraints);
+        createDadosUtilizadosPane(constraints);
+        createDadosInactivosPane(constraints);
+        createDadosActivosPane(constraints);
+        createAccionesDadosPane(constraints);
+        
+
 
     }
 
@@ -166,7 +183,7 @@ public class InterfazDeUsuario extends JFrame {
         constraints.fill = GridBagConstraints.WEST;
         constraints.anchor = GridBagConstraints.LINE_START;
         constraints.insets = new Insets(10,10,10,10);
-
+    
         this.add(salir, constraints);
     }
 
@@ -184,6 +201,162 @@ public class InterfazDeUsuario extends JFrame {
         constraints.insets = new Insets(10,10,10,10);
 
         this.add(ayuda, constraints);
+    }
+
+    public void createPointCounter(GridBagConstraints constraints) {
+        puntos = 0;
+    
+        puntaje = new JTextArea(1, 5);
+        puntaje.setPreferredSize(new Dimension(80, 20));
+        puntaje.setFont(new Font("SansSerif", Font.BOLD + Font.PLAIN, 14));
+        puntaje.setText("Puntaje: " + puntos);
+        puntaje.setBackground(Color.WHITE); 
+        puntaje.setForeground(Color.BLACK);
+        puntaje.setEditable(false);
+        puntaje.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+    
+        constraints.gridx = 2; 
+        constraints.gridy = 2;
+        constraints.gridwidth = 1;
+        constraints.fill = GridBagConstraints.NONE;
+        constraints.anchor = GridBagConstraints.WEST;
+        add(puntaje, constraints);
+    }
+
+    public void createRoundCount(GridBagConstraints constraints) {
+    ronda = 0;
+
+    numeroRonda = new JTextArea(1, 5); // cambiar el tamaño del JTextArea
+    numeroRonda.setPreferredSize(new Dimension(70, 20));
+    numeroRonda.setFont(new Font("SansSerif", Font.BOLD + Font.PLAIN, 14));
+    numeroRonda.setText("Ronda: " + ronda);
+    numeroRonda.setBackground(Color.WHITE); 
+    numeroRonda.setForeground(Color.BLACK); 
+    numeroRonda.setEditable(false);
+    numeroRonda.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2)); // establecer el borde en negro con grosor 2
+
+    constraints.gridx = 3;
+    constraints.gridy = 2;
+    constraints.gridwidth = 1;
+    constraints.fill = GridBagConstraints.NONE;
+    constraints.anchor = GridBagConstraints.WEST;
+    add(numeroRonda, constraints);
+}
+
+public void createNewRoundButton(GridBagConstraints constraints)
+    {
+        nuevaRonda = new JButton("NEXT");
+        nuevaRonda.setFont(new Font("SansSerif", Font.BOLD + Font.PLAIN, 14));
+        nuevaRonda.setForeground(Color.BLACK);
+        nuevaRonda.setBackground(Color.WHITE);
+        nuevaRonda.setFocusable(true);
+        nuevaRonda.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+
+        constraints.gridx = 0;
+        constraints.gridy = 12;
+        constraints.gridwidth = 7;
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.anchor = GridBagConstraints.CENTER;
+        this.add(nuevaRonda, constraints);
+    }
+
+    public void createDadosUtilizadosPane(GridBagConstraints constraints) {
+        panelDadosUtilizados = new JPanel();
+        panelDadosUtilizados.setMinimumSize(new Dimension(500, 200));
+        panelDadosUtilizados.setBorder(BorderFactory.createTitledBorder("Dados utilizados"));
+        panelDadosUtilizados.setBackground(Color.WHITE);
+        
+        constraints.gridx = 4;
+        constraints.gridy = 4;
+        constraints.gridwidth = 3;
+        constraints.gridheight = 1;
+        constraints.fill = GridBagConstraints.NONE;
+        constraints.anchor = GridBagConstraints.LINE_END;
+
+        this.add(panelDadosUtilizados, constraints);
+    }
+
+    public void createDadosInactivosPane(GridBagConstraints constraints) {
+        panelDadosInactivos = new JPanel();
+        panelDadosInactivos.setMinimumSize(new Dimension(500, 200));
+        panelDadosInactivos.setBorder(BorderFactory.createTitledBorder("Dados inactivos"));
+        panelDadosInactivos.setBackground(Color.WHITE);
+
+        botonesEnDadosInactivos.add(dado8);
+        botonesEnDadosInactivos.add(dado9);
+        botonesEnDadosInactivos.add(dado10);
+
+        constraints.gridx = 2;
+        constraints.gridy = 8;
+        constraints.gridwidth = 5;
+        constraints.fill = GridBagConstraints.NONE;
+        constraints.anchor = GridBagConstraints.LINE_END;
+
+        this.add(panelDadosInactivos, constraints);
+ 
+    }
+
+    public void createAccionesDadosPane(GridBagConstraints constraints)
+    {
+        panelAccionesDados = new JPanel();
+        panelAccionesDados.setBorder(BorderFactory.createTitledBorder("Acciones que está realizando"));
+        panelAccionesDados.setMinimumSize(new Dimension(400, 200));
+        panelAccionesDados.setBackground(Color.WHITE);
+
+        mensajesAccionesDados = new JTextArea(20,30);
+        mensajesAccionesDados.setFont(new Font("SansSerif", Font.BOLD, 12));
+        mensajesAccionesDados.setWrapStyleWord(true);
+        mensajesAccionesDados.setLineWrap(true);
+        mensajesAccionesDados.setEditable(false);
+
+        constraints.gridx = 0;
+        constraints.gridy = 4;
+        constraints.gridwidth = 3;
+        constraints.gridheight = 1;
+        constraints.fill = GridBagConstraints.NONE;
+        constraints.anchor = GridBagConstraints.LINE_START;
+
+    
+        panelAccionesDados.add(mensajesAccionesDados);
+        this.add(panelAccionesDados, constraints);
+    }
+
+    public void createDadosActivosPane(GridBagConstraints constraints)
+    {
+        panelDadosActivos = new JPanel();
+        panelDadosActivos.setPreferredSize(new Dimension(800, 600));
+        panelDadosActivos.setBorder(BorderFactory.createTitledBorder("Dados activos"));
+        panelDadosActivos.setBackground(Color.WHITE);
+
+        botonesEnDadosActivos.add(dado1);
+        botonesEnDadosActivos.add(dado2);
+        botonesEnDadosActivos.add(dado3);
+        botonesEnDadosActivos.add(dado4);
+        botonesEnDadosActivos.add(dado5);
+        botonesEnDadosActivos.add(dado6);
+        botonesEnDadosActivos.add(dado7);
+
+        constraints.gridx = 0;
+        constraints.gridy = 8;
+        constraints.gridwidth = 5;
+        constraints.fill = GridBagConstraints.NONE;
+        constraints.anchor = GridBagConstraints.LINE_START;
+
+        this.add(panelDadosActivos, constraints);
+
+    }
+
+
+    public void createSpace2(GridBagConstraints constraints) {
+        panelEspacioEnBlanco2 = new JPanel();
+        panelEspacioEnBlanco2.setBorder(BorderFactory.createLineBorder(Color.red));
+
+        constraints.gridx = 0;
+        constraints.gridy = 3;
+        constraints.gridwidth = 7;
+        constraints.gridheight = 1;
+
+        this.add(panelEspacioEnBlanco2, constraints);
     }
 
 
@@ -207,3 +380,4 @@ public class InterfazDeUsuario extends JFrame {
 
     }
 }
+
