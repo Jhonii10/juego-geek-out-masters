@@ -125,6 +125,8 @@ public class InterfazDeUsuario extends JFrame {
         createRoundCount(constraints);
         createDadosUtilizadosPane(constraints);
         createDadosInactivosPane(constraints);
+        createAccionesDadosPane(constraints);
+        createDadosActivosPane(constraints);
 
 
     }
@@ -261,6 +263,65 @@ public class InterfazDeUsuario extends JFrame {
 
         this.add(panelDadosInactivos, constraints);
 
+    }
+
+    public void createAccionesDadosPane(GridBagConstraints constraints)
+    {
+        panelAccionesDados = new JPanel();
+        panelAccionesDados.setBorder(BorderFactory.createTitledBorder("Acciones que está realizando"));
+        panelAccionesDados.setPreferredSize(new Dimension(350, 150));;
+        panelAccionesDados.setBackground(Color.WHITE);
+
+        mensajesAccionesDados = new JTextArea(20,30);
+        mensajesAccionesDados.setFont(new Font("SansSerif", Font.BOLD, 12));
+        mensajesAccionesDados.setWrapStyleWord(true);
+        mensajesAccionesDados.setLineWrap(true);
+        mensajesAccionesDados.setEditable(false);
+
+        constraints.gridx = 2;
+        constraints.gridy = 4;
+        constraints.gridwidth = 1;
+        constraints.fill = GridBagConstraints.BOTH;
+        constraints.anchor = GridBagConstraints.LINE_START;
+
+        //mensajesAccionesDados.setText(getEstadoToString()[0]);
+        panelAccionesDados.add(mensajesAccionesDados);
+        this.add(panelAccionesDados, constraints);
+    }
+
+
+    //------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * This function creates the DadosActivos panel.
+     * @param constraints
+     */
+
+    public void createDadosActivosPane(GridBagConstraints constraints)
+    {
+        panelDadosActivos = new JPanel();
+        panelDadosActivos.setPreferredSize(new Dimension(350, 150));
+        panelDadosActivos.setBorder(BorderFactory.createTitledBorder("Dados activos"));
+        panelDadosActivos.setBackground(Color.WHITE);
+
+        botonesEnDadosActivos.add(dado1);
+        botonesEnDadosActivos.add(dado2);
+        botonesEnDadosActivos.add(dado3);
+        botonesEnDadosActivos.add(dado4);
+        botonesEnDadosActivos.add(dado5);
+        botonesEnDadosActivos.add(dado6);
+        botonesEnDadosActivos.add(dado7);
+
+        constraints.gridx = 3;
+        constraints.gridy = 4;
+        constraints.gridwidth = 1;
+        constraints.fill = GridBagConstraints.BOTH;
+        constraints.anchor = GridBagConstraints.LINE_END;
+
+        this.add(panelDadosActivos, constraints);
+
+
+        //determinateBotonesActivos();
     }
 
 
