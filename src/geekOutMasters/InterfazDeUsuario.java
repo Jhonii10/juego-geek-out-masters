@@ -17,8 +17,7 @@ public class InterfazDeUsuario extends JFrame {
     private ImageIcon imageDado, imagenNuevoTamanho;
     private Image imagenOtroTamanho;
     private JButton ayuda, salir, nuevaRonda;
-    private JPanel panelDadosUtilizados, panelDadosInactivos, panelDadosActivos, panelEspacioEnBlanco1,
-            panelEspacioEnBlanco2, panelEspacioEnBlanco3, panelEspacioEnBlanco4, panelInstrucciones, panelAccionesDados;
+    private JPanel panelDadosUtilizados, panelDadosInactivos, panelDadosActivos, panelInstrucciones, panelAccionesDados;
     private JTextArea numeroRonda, puntaje, instrucciones, mensajesAccionesDados;
     private String mensajeFinal = "";
     private String poder = "";
@@ -43,7 +42,7 @@ public class InterfazDeUsuario extends JFrame {
         //Default JFrame configuration
         this.setTitle("Geek out master");
         this.setSize(1000,600);
-        this.setMinimumSize(new Dimension(500, 00));
+        this.setMinimumSize(new Dimension(1100, 500));
         this.setResizable(true);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
@@ -118,7 +117,6 @@ public class InterfazDeUsuario extends JFrame {
 
 
         createHeader(constraints);
-        //createSpace1(constraints);
         createPlayButton(constraints);
         createHelpButton(constraints);
         createPointCounter(constraints);
@@ -127,6 +125,7 @@ public class InterfazDeUsuario extends JFrame {
         createDadosInactivosPane(constraints);
         createAccionesDadosPane(constraints);
         createDadosActivosPane(constraints);
+        createNewRoundButton(constraints);
 
 
     }
@@ -141,7 +140,9 @@ public class InterfazDeUsuario extends JFrame {
         constraints.gridy = 0;
         constraints.gridwidth = 7;
         constraints.fill = GridBagConstraints.BOTH;
-        constraints.weightx = 0.1;
+        constraints.anchor = GridBagConstraints.NORTH;
+        constraints.weightx = 1.0;
+        constraints.weighty = 1.0;
 
         this.add(headerProject, constraints);
 
@@ -164,6 +165,10 @@ public class InterfazDeUsuario extends JFrame {
         this.add(salir, constraints);
     }
 
+    /**
+     * This function creates the help button.
+     * @param constraints
+     */
     public void createHelpButton(GridBagConstraints constraints) {
         ayuda = new JButton(" ? ");
         ayuda.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,22));
@@ -179,6 +184,10 @@ public class InterfazDeUsuario extends JFrame {
         this.add(ayuda, constraints);
     }
 
+    /**
+     * This function creates the text box to display the score.
+     * @param constraints
+     */
     public void createPointCounter(GridBagConstraints constraints) {
         puntos = 0;
 
@@ -200,6 +209,10 @@ public class InterfazDeUsuario extends JFrame {
         add(puntaje, constraints);
     }
 
+    /**
+     * This function creates the text box to display the number of rounds.
+     * @param constraints
+     */
     public void createRoundCount(GridBagConstraints constraints) {
         ronda = 0;
 
@@ -221,8 +234,11 @@ public class InterfazDeUsuario extends JFrame {
         add(numeroRonda, constraints);
     }
 
-//------------------------------------------------------------------------------------------------------------->
 
+    /**
+     * This function creates the DadosUtilizados panel.
+     * @param constraints
+     */
     public void createDadosUtilizadosPane(GridBagConstraints constraints) {
         panelDadosUtilizados = new JPanel();
         panelDadosUtilizados.setPreferredSize(new Dimension(350, 150)); // Cambia el tamaño mínimo del panel;
@@ -241,7 +257,6 @@ public class InterfazDeUsuario extends JFrame {
         this.add(panelDadosUtilizados, constraints);
     }
 
-    //------------------------------------------------------------------------------------------------------------------------------------------
 
     /**
      * This function creates the DadosInactivos panel.
@@ -265,6 +280,10 @@ public class InterfazDeUsuario extends JFrame {
 
     }
 
+    /**
+     * This function creates the AccionesDados panel.
+     * @param constraints
+     */
     public void createAccionesDadosPane(GridBagConstraints constraints)
     {
         panelAccionesDados = new JPanel();
@@ -325,11 +344,33 @@ public class InterfazDeUsuario extends JFrame {
     }
 
 
-        /**
-         * Main process of the Java program
-         * @param args Object used in order to send input data from command line when
-         * the program is execute by console.
-         */
+    /**
+     * This function creates the Nueva Ronda button.
+     * @param constraints
+     */
+    public void createNewRoundButton(GridBagConstraints constraints)
+    {
+        nuevaRonda = new JButton("NUEVA RONDA");
+        nuevaRonda.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,20));
+        nuevaRonda.setForeground(Color.WHITE);
+        //nuevaRonda.addMouseListener(escucha);
+        nuevaRonda.setBackground(new Color(0, 0, 0));
+        nuevaRonda.setFocusable(true);
+
+        constraints.gridx = 2;
+        constraints.gridy = 5;
+        constraints.gridwidth = 2;
+        constraints.fill = GridBagConstraints.BOTH;
+        constraints.anchor = GridBagConstraints.CENTER;
+        this.add(nuevaRonda, constraints);
+    }
+
+
+    /**
+     * Main process of the Java program
+     * @param args Object used in order to send input data from command line when
+     * the program is execute by console.
+     */
     public static void main(String[] args){
         EventQueue.invokeLater(() -> {
             InterfazDeUsuario miProjectGUI = new InterfazDeUsuario();
