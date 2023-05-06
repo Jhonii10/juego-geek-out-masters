@@ -148,7 +148,11 @@ public class InterfazDeUsuario extends JFrame {
 
     }
 
-
+    /**
+     * This function creates the play button.
+     * this button starts the game
+     * @param constraints
+     */
 
     public void createPlayButton(GridBagConstraints constraints) {
         salir = new JButton("Play");
@@ -344,6 +348,120 @@ public class InterfazDeUsuario extends JFrame {
     }
 
 
+    /**
+     * This function determines which face the dice will have in the DadosActivos panel.
+     */
+
+     /**public void determinateBotonesActivos()
+     {
+         for(boton=0;boton<botonesEnDadosActivos.size();boton++)
+         {
+             botonesEnDadosActivos.get(boton).removeMouseListener(escucha);
+             if(ronda==0)
+             {
+                 imageDado = new ImageIcon(getClass().getResource("/resources/7.png"));
+                 imagenOtroTamanho = imageDado.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+                 imagenNuevoTamanho = new ImageIcon(imagenOtroTamanho);
+             }
+             else
+             {
+                 imageDado = new ImageIcon(getClass().getResource("/resources/" + game.dadosActivosArray.get(boton).newCara() + ".png"));
+                 imagenOtroTamanho = imageDado.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+                 imagenNuevoTamanho = new ImageIcon(imagenOtroTamanho);
+             }
+             botonesEnDadosActivos.get(boton).setIcon(imagenNuevoTamanho);
+             botonesEnDadosActivos.get(boton).setBackground(Color.WHITE);
+             botonesEnDadosActivos.get(boton).addMouseListener(escucha);
+ 
+         }
+         rePaintDadosActivos();
+     }*/
+
+     /**
+     * This function updates DadosActivos panel.
+     */
+
+   /**  public void rePaintDadosActivos()
+    {
+        panelDadosActivos.removeAll();
+
+        panelDadosActivos.setLayout(new GridBagLayout());
+        GridBagConstraints constraintsPanelActivos = new GridBagConstraints();
+        for(boton=0;boton<botonesEnDadosActivos.size();boton++)
+        {
+            switch (boton)
+            {
+                case 0:
+                    constraintsPanelActivos.gridx = 1;
+                    constraintsPanelActivos.gridy = 8;
+                    constraintsPanelActivos.gridwidth = 1;
+                    constraintsPanelActivos.fill = GridBagConstraints.NONE;
+                    constraintsPanelActivos.anchor = GridBagConstraints.LINE_START;
+
+                    panelDadosActivos.add(botonesEnDadosActivos.get(0), constraintsPanelActivos);
+                    break;
+                case 1:
+                    constraintsPanelActivos.gridx = 2;
+                    constraintsPanelActivos.gridy = 8;
+                    constraintsPanelActivos.gridwidth = 1;
+                    constraintsPanelActivos.fill = GridBagConstraints.NONE;
+                    constraintsPanelActivos.anchor = GridBagConstraints.LINE_START;
+
+                    panelDadosActivos.add(botonesEnDadosActivos.get(1), constraintsPanelActivos);
+                    break;
+                case 2:
+                    constraintsPanelActivos.gridx = 3;
+                    constraintsPanelActivos.gridy = 8;
+                    constraintsPanelActivos.gridwidth = 1;
+                    constraintsPanelActivos.fill = GridBagConstraints.NONE;
+                    constraintsPanelActivos.anchor = GridBagConstraints.LINE_START;
+
+                    panelDadosActivos.add(botonesEnDadosActivos.get(2), constraintsPanelActivos);
+                    break;
+                case 3:
+                    constraintsPanelActivos.gridx = 4;
+                    constraintsPanelActivos.gridy = 8;
+                    constraintsPanelActivos.gridwidth = 1;
+                    constraintsPanelActivos.fill = GridBagConstraints.NONE;
+                    constraintsPanelActivos.anchor = GridBagConstraints.LINE_START;
+
+                    panelDadosActivos.add(botonesEnDadosActivos.get(3), constraintsPanelActivos);
+                    break;
+                case 4:
+                    constraintsPanelActivos.gridx = 5;
+                    constraintsPanelActivos.gridy = 8;
+                    constraintsPanelActivos.gridwidth = 1;
+                    constraintsPanelActivos.fill = GridBagConstraints.NONE;
+                    constraintsPanelActivos.anchor = GridBagConstraints.LINE_END;
+
+                    panelDadosActivos.add(botonesEnDadosActivos.get(4), constraintsPanelActivos);
+                    break;
+                case 5:
+                    constraintsPanelActivos.gridx = 2;
+                    constraintsPanelActivos.gridy = 9;
+                    constraintsPanelActivos.gridwidth = 1;
+                    constraintsPanelActivos.fill = GridBagConstraints.NONE;
+                    constraintsPanelActivos.anchor = GridBagConstraints.LINE_START;
+
+                    panelDadosActivos.add(botonesEnDadosActivos.get(5), constraintsPanelActivos);
+                    break;
+                case 6:
+                    constraintsPanelActivos.gridx = 4;
+                    constraintsPanelActivos.gridy = 9;
+                    constraintsPanelActivos.gridwidth = 1;
+                    constraintsPanelActivos.fill = GridBagConstraints.NONE;
+                    constraintsPanelActivos.anchor = GridBagConstraints.LINE_START;
+
+                    panelDadosActivos.add(botonesEnDadosActivos.get(6), constraintsPanelActivos);
+                    break;
+            }
+        }
+        revalidate();
+        repaint();
+    } */
+ 
+ 
+    
     /**
      * This function creates the Nueva Ronda button.
      * @param constraints
