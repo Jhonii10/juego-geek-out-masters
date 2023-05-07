@@ -2,6 +2,8 @@ package geekOutMasters;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 /**
@@ -16,7 +18,7 @@ public class InterfazDeUsuario extends JFrame {
     private JButton dado1, dado2, dado3, dado4, dado5, dado6, dado7, dado8, dado9, dado10;
     private ImageIcon imageDado, imagenNuevoTamanho;
     private Image imagenOtroTamanho;
-    private JButton ayuda, salir, nuevaRonda;
+    private JButton ayuda, play, nuevaRonda;
     private JPanel panelDadosUtilizados, panelDadosInactivos, panelDadosActivos, panelInstrucciones, panelAccionesDados;
     private JTextArea numeroRonda, puntaje, instrucciones, mensajesAccionesDados;
     private String mensajeFinal = "";
@@ -174,7 +176,7 @@ public class InterfazDeUsuario extends JFrame {
         constraints.gridx = 0;
         constraints.gridy = 0;
         constraints.gridwidth = 7;
-        constraints.fill = GridBagConstraints.BOTH;
+        constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.anchor = GridBagConstraints.NORTH;
         constraints.weightx = 1.0;
         constraints.weighty = 1.0;
@@ -190,10 +192,11 @@ public class InterfazDeUsuario extends JFrame {
      */
 
     public void createPlayButton(GridBagConstraints constraints) {
-        salir = new JButton("Play");
-        salir.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,18));
-        salir.setForeground(Color.WHITE);
-        salir.setBackground(new Color(255, 81, 51));
+        play = new JButton("Play");
+        play.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,18));
+        play.setForeground(Color.WHITE);
+        play.addMouseListener(escucha);
+        play.setBackground(new Color(255, 81, 51));
         constraints.gridx = 0;
         constraints.gridy = 1;
         constraints.gridwidth = 1;
@@ -201,26 +204,7 @@ public class InterfazDeUsuario extends JFrame {
         constraints.anchor = GridBagConstraints.LINE_START;
         constraints.insets = new Insets(10,10,10,10);
     
-        this.add(salir, constraints);
-    }
-
-    /**
-     * This function creates the help button.
-     * @param constraints
-     */
-    public void createHelpButton(GridBagConstraints constraints) {
-        ayuda = new JButton(" ? ");
-        ayuda.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,22));
-        ayuda.setForeground(Color.white);
-        ayuda.setBackground(new Color(0, 102, 255));
-        constraints.gridx = 6;
-        constraints.gridy = 1;
-        constraints.gridwidth = 1;
-        constraints.fill = GridBagConstraints.NONE;
-        constraints.anchor = GridBagConstraints.NORTHEAST;
-        constraints.insets = new Insets(10,10,10,10);
-
-        this.add(ayuda, constraints);
+        this.add(play, constraints);
     }
 
     /**
@@ -231,20 +215,19 @@ public class InterfazDeUsuario extends JFrame {
         puntos = 0;
 
         puntaje = new JTextArea(1, 5);
-        puntaje.setPreferredSize(new Dimension(120, 30));
         puntaje.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,18));
-        puntaje.setText("Puntaje: " + puntos);
+        puntaje.setText("PUNTAJE: " + puntos);
         puntaje.setBackground(Color.WHITE);
         puntaje.setForeground(Color.BLACK);
         puntaje.setEditable(false);
-        puntaje.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        puntaje.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
 
         constraints.gridx = 2;
-        constraints.gridy = 2;
+        constraints.gridy = 1;
         constraints.gridwidth = 1;
-        constraints.fill = GridBagConstraints.NONE;
+        constraints.fill = GridBagConstraints.WEST;
         constraints.anchor = GridBagConstraints.CENTER;
-        constraints.insets = new Insets(10,10,10,200);
+        constraints.insets = new Insets(10,10,10,50);
         add(puntaje, constraints);
     }
 
@@ -256,22 +239,45 @@ public class InterfazDeUsuario extends JFrame {
         ronda = 0;
 
         numeroRonda = new JTextArea(1, 5); // cambiar el tamaño del JTextArea
-        numeroRonda.setPreferredSize(new Dimension(105, 30));
         numeroRonda.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,18));
-        numeroRonda.setText("Ronda: " + ronda);
+        numeroRonda.setText("RONDA: " + ronda);
         numeroRonda.setBackground(Color.WHITE);
         numeroRonda.setForeground(Color.BLACK);
         numeroRonda.setEditable(false);
-        numeroRonda.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2)); // establecer el borde en negro con grosor 2
+        numeroRonda.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1)); // establecer el borde en negro con grosor 2
 
         constraints.gridx = 3;
-        constraints.gridy = 2;
+        constraints.gridy = 1;
         constraints.gridwidth = 1;
-        constraints.fill = GridBagConstraints.NONE;
+        constraints.fill = GridBagConstraints.WEST;
         constraints.anchor = GridBagConstraints.CENTER;
-        constraints.insets = new Insets(10,200,10,10);
+        constraints.insets = new Insets(10,10,10,50);
         add(numeroRonda, constraints);
     }
+
+    /**
+     * This function creates the help button.
+     * @param constraints
+     */
+    public void createHelpButton(GridBagConstraints constraints) {
+        ayuda = new JButton(" ? ");
+        ayuda.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,18));
+        ayuda.setForeground(Color.white);
+        ayuda.addMouseListener(escucha);
+        ayuda.setBackground(new Color(0, 102, 255));
+        constraints.gridx = 6;
+        constraints.gridy = 1;
+        constraints.gridwidth = 1;
+        constraints.fill = GridBagConstraints.WEST;
+        constraints.anchor = GridBagConstraints.NORTHEAST;
+        constraints.insets = new Insets(10,10,10,10);
+
+        this.add(ayuda, constraints);
+    }
+
+
+
+
 
 
     /**
@@ -283,8 +289,8 @@ public class InterfazDeUsuario extends JFrame {
         panelDadosUtilizados.setPreferredSize(new Dimension(350, 150)); // Cambia el tamaño mínimo del panel;
         panelDadosUtilizados.setBorder(BorderFactory.createTitledBorder("Dados utilizados"));
         panelDadosUtilizados.setBackground(Color.WHITE);
-        //panelDadosUtilizados.removeMouseListener(escucha);
-        //rePaintDadosUtilizados();
+        panelDadosUtilizados.removeMouseListener(escucha);
+        rePaintDadosUtilizados();
 
         constraints.gridx = 2;
         constraints.gridy = 3;
@@ -317,6 +323,20 @@ public class InterfazDeUsuario extends JFrame {
 
         this.add(panelDadosInactivos, constraints);
 
+        determinateBotonesInactivos();
+
+    }
+
+    public void determinateBotonesInactivos()
+    {
+        imageDado = new ImageIcon(getClass().getResource("/resources/7.png"));
+        imagenOtroTamanho = imageDado.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+        imagenNuevoTamanho = new ImageIcon(imagenOtroTamanho);
+        for (boton = 0; boton < botonesEnDadosInactivos.size(); boton++) {
+            botonesEnDadosInactivos.get(boton).setIcon(imagenNuevoTamanho);
+            botonesEnDadosInactivos.get(boton).setBackground(Color.WHITE);
+        }
+        rePaintDadosInactivos();
     }
 
     /**
@@ -342,7 +362,7 @@ public class InterfazDeUsuario extends JFrame {
         constraints.fill = GridBagConstraints.BOTH;
         constraints.anchor = GridBagConstraints.LINE_START;
 
-        //mensajesAccionesDados.setText(getEstadoToString()[0]);
+        mensajesAccionesDados.setText(getEstadoToString()[0]);
         panelAccionesDados.add(mensajesAccionesDados);
         this.add(panelAccionesDados, constraints);
     }
@@ -379,7 +399,7 @@ public class InterfazDeUsuario extends JFrame {
         this.add(panelDadosActivos, constraints);
 
 
-        //determinateBotonesActivos();
+        determinateBotonesActivos();
     }
 
 
@@ -387,7 +407,7 @@ public class InterfazDeUsuario extends JFrame {
      * This function determines which face the dice will have in the DadosActivos panel.
      */
 
-     /**public void determinateBotonesActivos()
+     public void determinateBotonesActivos()
      {
          for(boton=0;boton<botonesEnDadosActivos.size();boton++)
          {
@@ -410,7 +430,7 @@ public class InterfazDeUsuario extends JFrame {
  
          }
          rePaintDadosActivos();
-     }*/
+     }
 
       /**
      * This function creates the Nueva Ronda button.
@@ -421,14 +441,14 @@ public class InterfazDeUsuario extends JFrame {
         nuevaRonda = new JButton("NUEVA RONDA");
         nuevaRonda.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,20));
         nuevaRonda.setForeground(Color.WHITE);
-        //nuevaRonda.addMouseListener(escucha);
+        nuevaRonda.addMouseListener(escucha);
         nuevaRonda.setBackground(new Color(0, 0, 0));
         nuevaRonda.setFocusable(true);
 
         constraints.gridx = 2;
         constraints.gridy = 5;
         constraints.gridwidth = 2;
-        constraints.fill = GridBagConstraints.BOTH;
+        constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.anchor = GridBagConstraints.CENTER;
         this.add(nuevaRonda, constraints);
     }
@@ -437,7 +457,7 @@ public class InterfazDeUsuario extends JFrame {
      * This function updates DadosActivos panel.
      */
 
-   /**  public void rePaintDadosActivos()
+     public void rePaintDadosActivos()
     {
         panelDadosActivos.removeAll();
 
@@ -514,11 +534,108 @@ public class InterfazDeUsuario extends JFrame {
         }
         revalidate();
         repaint();
-    } */
+    }
+
+
+    private void rePaintDadosInactivos()
+    {
+        panelDadosInactivos.removeAll();
+
+        panelDadosInactivos.setLayout(new GridBagLayout());
+        GridBagConstraints constraintsPanelInactivos = new GridBagConstraints();
+
+        for (boton = 0; boton < botonesEnDadosInactivos.size(); boton++) {
+            switch (boton) {
+                case 0:
+                    constraintsPanelInactivos.gridx = 4;
+                    constraintsPanelInactivos.gridy = 4;
+                    constraintsPanelInactivos.gridwidth = 1;
+                    constraintsPanelInactivos.fill = GridBagConstraints.NONE;
+                    constraintsPanelInactivos.anchor = GridBagConstraints.CENTER;
+
+                    panelDadosInactivos.add(botonesEnDadosInactivos.get(0), constraintsPanelInactivos);
+                    break;
+                case 1:
+                    constraintsPanelInactivos.gridx = 5;
+                    constraintsPanelInactivos.gridy = 4;
+                    constraintsPanelInactivos.gridwidth = 1;
+                    constraintsPanelInactivos.fill = GridBagConstraints.NONE;
+                    constraintsPanelInactivos.anchor = GridBagConstraints.CENTER;
+
+                    panelDadosInactivos.add(botonesEnDadosInactivos.get(1), constraintsPanelInactivos);
+                    break;
+                case 2:
+                    constraintsPanelInactivos.gridx = 6;
+                    constraintsPanelInactivos.gridy = 4;
+                    constraintsPanelInactivos.gridwidth = 1;
+                    constraintsPanelInactivos.fill = GridBagConstraints.NONE;
+                    constraintsPanelInactivos.anchor = GridBagConstraints.CENTER;
+
+                    panelDadosInactivos.add(botonesEnDadosInactivos.get(2), constraintsPanelInactivos);
+                    break;
+                case 3:
+                    constraintsPanelInactivos.gridx = 4;
+                    constraintsPanelInactivos.gridy = 5;
+                    constraintsPanelInactivos.gridwidth = 1;
+                    constraintsPanelInactivos.fill = GridBagConstraints.NONE;
+                    constraintsPanelInactivos.anchor = GridBagConstraints.CENTER;
+
+                    panelDadosInactivos.add(botonesEnDadosInactivos.get(3), constraintsPanelInactivos);
+                    break;
+                case 4:
+                    constraintsPanelInactivos.gridx = 5;
+                    constraintsPanelInactivos.gridy = 5;
+                    constraintsPanelInactivos.gridwidth = 1;
+                    constraintsPanelInactivos.fill = GridBagConstraints.NONE;
+                    constraintsPanelInactivos.anchor = GridBagConstraints.CENTER;
+
+                    panelDadosInactivos.add(botonesEnDadosInactivos.get(4), constraintsPanelInactivos);
+                    break;
+                case 5:
+                    constraintsPanelInactivos.gridx = 6;
+                    constraintsPanelInactivos.gridy = 5;
+                    constraintsPanelInactivos.gridwidth = 1;
+                    constraintsPanelInactivos.fill = GridBagConstraints.NONE;
+                    constraintsPanelInactivos.anchor = GridBagConstraints.CENTER;
+
+                    panelDadosInactivos.add(botonesEnDadosInactivos.get(5), constraintsPanelInactivos);
+                    break;
+                case 6:
+                    constraintsPanelInactivos.gridx = 4;
+                    constraintsPanelInactivos.gridy = 6;
+                    constraintsPanelInactivos.gridwidth = 1;
+                    constraintsPanelInactivos.fill = GridBagConstraints.NONE;
+                    constraintsPanelInactivos.anchor = GridBagConstraints.CENTER;
+
+                    panelDadosInactivos.add(botonesEnDadosInactivos.get(6), constraintsPanelInactivos);
+                    break;
+                case 7:
+                    constraintsPanelInactivos.gridx = 5;
+                    constraintsPanelInactivos.gridy = 6;
+                    constraintsPanelInactivos.gridwidth = 1;
+                    constraintsPanelInactivos.fill = GridBagConstraints.NONE;
+                    constraintsPanelInactivos.anchor = GridBagConstraints.CENTER;
+
+                    panelDadosInactivos.add(botonesEnDadosInactivos.get(7), constraintsPanelInactivos);
+                    break;
+                case 8:
+                    constraintsPanelInactivos.gridx = 6;
+                    constraintsPanelInactivos.gridy = 6;
+                    constraintsPanelInactivos.gridwidth = 1;
+                    constraintsPanelInactivos.fill = GridBagConstraints.NONE;
+                    constraintsPanelInactivos.anchor = GridBagConstraints.CENTER;
+
+                    panelDadosInactivos.add(botonesEnDadosInactivos.get(8), constraintsPanelInactivos);
+                    break;
+            }
+        }
+        revalidate();
+        panelDadosInactivos.updateUI();
+    }
 
     /**
      * This function updates DadosUtilizados panel.
-     
+     */
     private void rePaintDadosUtilizados()
     {
         panelDadosUtilizados.removeAll();
@@ -614,11 +731,185 @@ public class InterfazDeUsuario extends JFrame {
         }
         revalidate();
         panelDadosUtilizados.updateUI();
-    }*/
- 
- 
-    
-   
+    }
+
+
+
+
+
+
+
+    private void verifyDicesInDadosActivos() {
+        GridBagConstraints constraints = new GridBagConstraints();
+        if (botonesEnDadosActivos.size()==0) {
+            nuevaRonda.addMouseListener(escucha);
+            nuevaRonda.setBackground(Color.green);
+            estado=8;
+            mensajesAccionesDados.setText(getEstadoToString()[0]);
+            panelAccionesDados.add(mensajesAccionesDados);
+        } else if (botonesEnDadosActivos.size() == 1) {
+            if (game.dadosActivosArray.get(0).getCara() == 1 | game.dadosActivosArray.get(0).getCara() == 2 | game.dadosActivosArray.get(0).getCara() == 3) {
+                nuevaRonda.addMouseListener(escucha);
+                nuevaRonda.setBackground(Color.green);
+                estado=8;
+                mensajesAccionesDados.setText(getEstadoToString()[0]);
+                panelAccionesDados.add(mensajesAccionesDados);
+            } else if (game.dadosActivosArray.get(0).getCara() == 5 | game.dadosActivosArray.get(0).getCara() == 6) {
+                nuevaRonda.addMouseListener(escucha);
+                nuevaRonda.setBackground(Color.green);
+                estado=8;
+                mensajesAccionesDados.setText(getEstadoToString()[0]);
+                panelAccionesDados.add(mensajesAccionesDados);
+            }
+        } else {
+            switch (botonesEnDadosActivos.size()) {
+                case 2:
+                    if (game.dadosActivosArray.get(0).getCara() == 5 | game.dadosActivosArray.get(0).getCara() == 6) {
+                        if (game.dadosActivosArray.get(1).getCara() == 5 | game.dadosActivosArray.get(1).getCara() == 6) {
+                            nuevaRonda.addMouseListener(escucha);
+                            nuevaRonda.setBackground(Color.green);
+                            estado=8;
+                            mensajesAccionesDados.setText(getEstadoToString()[0]);
+                            panelAccionesDados.add(mensajesAccionesDados);
+                        }
+                    }
+                    break;
+                case 3:
+                    if (game.dadosActivosArray.get(0).getCara() == 5 | game.dadosActivosArray.get(0).getCara() == 6) {
+                        if (game.dadosActivosArray.get(1).getCara() == 5 | game.dadosActivosArray.get(1).getCara() == 6) {
+                            if (game.dadosActivosArray.get(2).getCara() == 5 | game.dadosActivosArray.get(2).getCara() == 6) {
+                                nuevaRonda.addMouseListener(escucha);
+                                nuevaRonda.setBackground(Color.green);
+                                estado=8;
+                                mensajesAccionesDados.setText(getEstadoToString()[0]);
+                                panelAccionesDados.add(mensajesAccionesDados);
+                            }
+                        }
+                    }
+                    break;
+                case 4:
+                    if (game.dadosActivosArray.get(0).getCara() == 5 | game.dadosActivosArray.get(0).getCara() == 6) {
+                        if (game.dadosActivosArray.get(1).getCara() == 5 | game.dadosActivosArray.get(1).getCara() == 6) {
+                            if (game.dadosActivosArray.get(2).getCara() == 5 | game.dadosActivosArray.get(2).getCara() == 6) {
+                                if (game.dadosActivosArray.get(3).getCara() == 5 | game.dadosActivosArray.get(3).getCara() == 6) {
+                                    nuevaRonda.addMouseListener(escucha);
+                                    nuevaRonda.setBackground(Color.green);
+                                    estado=8;
+                                    mensajesAccionesDados.setText(getEstadoToString()[0]);
+                                    panelAccionesDados.add(mensajesAccionesDados);
+                                }
+                            }
+                        }
+                    }
+                    break;
+                case 5:
+                    if (game.dadosActivosArray.get(0).getCara() == 5 | game.dadosActivosArray.get(0).getCara() == 6) {
+                        if (game.dadosActivosArray.get(1).getCara() == 5 | game.dadosActivosArray.get(1).getCara() == 6) {
+                            if (game.dadosActivosArray.get(2).getCara() == 5 | game.dadosActivosArray.get(2).getCara() == 6) {
+                                if (game.dadosActivosArray.get(3).getCara() == 5 | game.dadosActivosArray.get(3).getCara() == 6) {
+                                    if (game.dadosActivosArray.get(4).getCara() == 5 | game.dadosActivosArray.get(4).getCara() == 6) {
+                                        nuevaRonda.addMouseListener(escucha);
+                                        nuevaRonda.setBackground(Color.green);
+                                        estado=8;
+                                        mensajesAccionesDados.setText(getEstadoToString()[0]);
+                                        panelAccionesDados.add(mensajesAccionesDados);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    break;
+                case 6:
+                    if (game.dadosActivosArray.get(0).getCara() == 5 | game.dadosActivosArray.get(0).getCara() == 6) {
+                        if (game.dadosActivosArray.get(1).getCara() == 5 | game.dadosActivosArray.get(1).getCara() == 6) {
+                            if (game.dadosActivosArray.get(2).getCara() == 5 | game.dadosActivosArray.get(2).getCara() == 6) {
+                                if (game.dadosActivosArray.get(3).getCara() == 5 | game.dadosActivosArray.get(3).getCara() == 6) {
+                                    if (game.dadosActivosArray.get(4).getCara() == 5 | game.dadosActivosArray.get(4).getCara() == 6) {
+                                        if (game.dadosActivosArray.get(5).getCara() == 5 | game.dadosActivosArray.get(5).getCara() == 6) {
+                                            nuevaRonda.addMouseListener(escucha);
+                                            nuevaRonda.setBackground(Color.green);
+                                            estado=8;
+                                            mensajesAccionesDados.setText(getEstadoToString()[0]);
+                                            panelAccionesDados.add(mensajesAccionesDados);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    break;
+                case 7:
+                    if (game.dadosActivosArray.get(0).getCara() == 5 | game.dadosActivosArray.get(0).getCara() == 6) {
+                        if (game.dadosActivosArray.get(1).getCara() == 5 | game.dadosActivosArray.get(1).getCara() == 6) {
+                            if (game.dadosActivosArray.get(2).getCara() == 5 | game.dadosActivosArray.get(2).getCara() == 6) {
+                                if (game.dadosActivosArray.get(3).getCara() == 5 | game.dadosActivosArray.get(3).getCara() == 6) {
+                                    if (game.dadosActivosArray.get(4).getCara() == 5 | game.dadosActivosArray.get(4).getCara() == 6) {
+                                        if (game.dadosActivosArray.get(5).getCara() == 5 | game.dadosActivosArray.get(5).getCara() == 6) {
+                                            if (game.dadosActivosArray.get(6).getCara() == 5 | game.dadosActivosArray.get(6).getCara() == 6) {
+                                                nuevaRonda.addMouseListener(escucha);
+                                                nuevaRonda.setBackground(Color.green);
+                                                estado=8;
+                                                mensajesAccionesDados.setText(getEstadoToString()[0]);
+                                                panelAccionesDados.add(mensajesAccionesDados);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    break;
+            }
+        }
+    }
+
+
+
+    public String[] getEstadoToString () {
+        switch (estado) {
+            case 1:
+                estadoToString[0] = "Has seleccionado el Meeple: puedes relanzar otro dado de la sección dados activos";
+                break;
+            case 2:
+                estadoToString[0] = "Has ejecutado el poder del Meeple. Continúa jugando.\n" + "\nRecuerda pasar el"
+                        + " mouse por las secciones dados inactivos y dados utilizados para ver los dados que estén allí.";
+                break;
+            case 3:
+                estadoToString[0] = "Has seleccionado la Nave Espacial: puedes enviar un dado no usado (de la sección"
+                        + " dados activos) a la sección de dados inactivos";
+                break;
+            case 4:
+                estadoToString[0] = "Has ejecutado el poder de la Nave Espacial. Continúa jugando.\n"
+                        + "\nRecuerda pasar el mouse por las secciones dados inactivos y dados utilizados para ver los"
+                        + " dados que estén allí.";;
+                break;
+            case 5:
+                estadoToString[0] = "Has seleccionado el Superheroe: puedes hacer que cualquier dado no usado (sección"
+                        + " dados activos) sea volteado y colocado en su cara opuesta.";
+                break;
+            case 6:
+                estadoToString[0] = "Has ejecutado el poder del Superhéroe. Continúa jugando.\n" + "\nRecuerda pasar el"
+                        + " mouse por las secciones dados inactivos y dados utilizados para ver los dados que estén allí.";;
+                break;
+
+            case 7:
+                estadoToString[0] = "Has seleccionado el Corazón: toma un dado aleatorio de la sección de dados inactivos"
+                        + " y lo lanza para que sea un nuevo dado activo.";
+                break;
+            case 8:
+                estadoToString[0] = "Puedes pasar a la siguiente ronda.";
+                break;
+            case 9:
+                estadoToString[0] = "Has iniciado una nueva ronda. Buena suerte.";
+                break;
+            case 10:
+                estadoToString[0] = MENSAJE_INICIO;
+                break;
+            case 11:
+                estadoToString[0] = "Lo sentimos. Hubo un problema :/ Por favor intenta de nuevo.";
+        }
+        return estadoToString;
+    }
 
 
     /**
@@ -635,8 +926,227 @@ public class InterfazDeUsuario extends JFrame {
     /**
      * inner class that extends an Adapter Class or implements Listeners used by GUI class
      */
-    private class Escucha {
+    private class Escucha extends MouseAdapter {
 
+        private String kk;
+        public void firstSelection(int boton) {
+            if (seleccionDado == 1) {
+                if ((game.dadosActivosArray.get(boton).getCara()) == 1 | (game.dadosActivosArray.get(boton).getCara()) == 2 | (game.dadosActivosArray.get(boton).getCara()) == 3) {
+                    botonesEnDadosActivos.get(boton).removeMouseListener(escucha);
+                    botonesEnDadosUtilizados.add(botonesEnDadosActivos.get(boton));
+                    botonesEnDadosActivos.remove(boton);
+                    if ((game.dadosActivosArray.get(boton).getCara()) == 1) {
+                        poder = "meeple";
+                        estado = 1;
+                        mensajesAccionesDados.setText(getEstadoToString()[0]);
+                        panelAccionesDados.add(mensajesAccionesDados);
+                    } else if ((game.dadosActivosArray.get(boton).getCara()) == 2) {
+                        poder = "cohete";
+                        estado = 3;
+                        mensajesAccionesDados.setText(getEstadoToString()[0]);
+                        panelAccionesDados.add(mensajesAccionesDados);
+                    } else if ((game.dadosActivosArray.get(boton).getCara()) == 3) {
+                        poder = "superheroe";
+                        estado = 5;
+                        mensajesAccionesDados.setText(getEstadoToString()[0]);
+                        panelAccionesDados.add(mensajesAccionesDados);
+                    }
+                    game.powers(boton);
+                    seleccionDado = 2;
+
+                } else if ((game.dadosActivosArray.get(boton).getCara()) == 4) {
+                    botonesEnDadosActivos.get(boton).removeMouseListener(escucha);
+                    botonesEnDadosUtilizados.add(botonesEnDadosActivos.get(boton));
+                    botonesEnDadosActivos.remove(boton);
+
+                    if (botonesEnDadosInactivos.size() != 0) {
+                        game.powers(boton);
+                        game.heart(boton);
+                        estado = 7;
+                        mensajesAccionesDados.setText(getEstadoToString()[0]);
+                        panelAccionesDados.add(mensajesAccionesDados);
+
+                        imageDado = new ImageIcon(getClass().getResource("/resources/" + game.dadosActivosArray.get(boton).getCara() + ".png"));
+                        imagenOtroTamanho = imageDado.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+                        imagenNuevoTamanho = new ImageIcon(imagenOtroTamanho);
+                        botonesEnDadosInactivos.get(unBoton).setIcon(imagenNuevoTamanho);
+                        botonesEnDadosInactivos.get(unBoton).addMouseListener(escucha);
+                        botonesEnDadosActivos.add(boton, botonesEnDadosInactivos.get(unBoton));
+                        botonesEnDadosInactivos.remove(unBoton);
+
+                        verifyDicesInDadosActivos();
+
+                        seleccionDado = 1;
+                    }
+                } else if ((game.dadosActivosArray.get(boton).getCara()) == 5 | (game.dadosActivosArray.get(boton).getCara()) == 6) {
+                    verifyDicesInDadosActivos();
+                    seleccionDado = 1;
+                } else {
+                    verifyDicesInDadosActivos();
+                    seleccionDado = 1;
+                }
+            }
+            else
+            {
+                estado = 11;
+                mensajesAccionesDados.setText(getEstadoToString()[0]);
+                panelAccionesDados.add(mensajesAccionesDados);
+
+            }
+        }
+
+        public void secondSelecction(int boton)
+        {
+            if(seleccionDado==2) {
+                if (poder == "meeple") {
+                    game.meeple(boton);
+                    estado = 2;
+                    mensajesAccionesDados.setText(getEstadoToString()[0]);
+                    panelAccionesDados.add(mensajesAccionesDados);
+
+                    imageDado = new ImageIcon(getClass().getResource("/resources/" + ((game.dadosActivosArray).get(boton)).getCara() + ".png"));
+                    imagenOtroTamanho = imageDado.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+                    imagenNuevoTamanho = new ImageIcon(imagenOtroTamanho);
+                    botonesEnDadosActivos.get(boton).setIcon(imagenNuevoTamanho);
+                } else if (poder == "cohete") {
+                    game.spaceship(boton);
+                    estado = 4;
+                    mensajesAccionesDados.setText(getEstadoToString()[0]);
+                    panelAccionesDados.add(mensajesAccionesDados);
+
+                    botonesEnDadosActivos.get(boton).removeMouseListener(escucha);
+                    botonesEnDadosInactivos.add(botonesEnDadosActivos.get(boton));
+                    botonesEnDadosActivos.remove(boton);
+                } else if (poder == "superheroe") {
+                    game.superhero(boton);
+                    estado = 6;
+                    mensajesAccionesDados.setText(getEstadoToString()[0]);
+                    panelAccionesDados.add(mensajesAccionesDados);
+
+                    imageDado = new ImageIcon(getClass().getResource("/resources/" + ((game.dadosActivosArray).get(boton)).getCara() + ".png"));
+                    imagenOtroTamanho = imageDado.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+                    imagenNuevoTamanho = new ImageIcon(imagenOtroTamanho);
+                    botonesEnDadosActivos.get(boton).setIcon(imagenNuevoTamanho);
+                }
+                verifyDicesInDadosActivos();
+                poder = "";
+            }
+            else
+            {
+                estado = 11;
+                mensajesAccionesDados.setText(getEstadoToString()[0]);
+                panelAccionesDados.add(mensajesAccionesDados);
+            }
+        }
+
+        public void mouseClicked(MouseEvent e) {
+            if (e.getSource() == nuevaRonda || e.getSource() == play ) {
+                estado = 9;
+                mensajesAccionesDados.setText(getEstadoToString()[0]);
+                panelAccionesDados.add(mensajesAccionesDados);
+                nuevaRonda.removeMouseListener(escucha);
+                nuevaRonda.setBackground(Color.darkGray);
+                if (ronda == 5) {
+                    game.roundPoints();
+                    game.drakeDices();
+                    game.determinateScore();
+                    if (game.endGame()) {
+                        mensajeFinal = "¡¡Felicidades!! Has ganado con: " + puntos + " puntos"
+                                + "\nPuedes volver a jugar empezando una nueva ronda.";
+                    } else {
+                        mensajeFinal = "Has perdido con: " + puntos + " puntos" + "\nPuedes volver a jugar empezando una nueva ronda.";
+                    }
+                    ronda = 0;
+                    JOptionPane.showMessageDialog(null, mensajeFinal);
+                } else {
+                    if (ronda > 0) {
+                        game.roundPoints();
+                        game.drakeDices();
+                        game.determinateScore();
+
+                        estado = 8;
+                        mensajesAccionesDados.setText(getEstadoToString()[0]);
+                        panelAccionesDados.add(mensajesAccionesDados);
+
+                        remove(panelDadosActivos);
+                        remove(panelDadosInactivos);
+                        remove(panelDadosUtilizados);
+                    }
+                }
+                game.nextRound();
+
+                ronda = game.getRonda();
+                numeroRonda.setText("Ronda: " + ronda);
+
+                puntos = game.getPuntaje();
+                puntaje.setText("Puntaje: " + puntos);
+
+                GridBagConstraints constraints = new GridBagConstraints();
+
+                //------------------------------------------------------------------------------------------------------------------------------------------
+
+                if (botonesEnDadosUtilizados.size() != 0) {
+                    botonesEnDadosUtilizados.clear();
+                }
+
+                createDadosUtilizadosPane(constraints);
+
+                //------------------------------------------------------------------------------------------------------------------------------------------
+
+                if (botonesEnDadosInactivos.size() != 0) {
+                    botonesEnDadosInactivos.clear();
+                }
+
+                createDadosInactivosPane(constraints);
+
+                //------------------------------------------------------------------------------------------------------------------------------------------
+
+                if (botonesEnDadosActivos.size() != 0) {
+                    botonesEnDadosActivos.clear();
+                }
+                createDadosActivosPane(constraints);
+
+                //------------------------------------------------------------------------------------------------------------------------------------------
+
+                verifyDicesInDadosActivos();
+
+                seleccionDado=1;
+
+                revalidate();
+                repaint();
+            }
+
+            else if (e.getSource() == ayuda)
+            {
+                panelInstrucciones.add(instrucciones, BorderLayout.LINE_START);
+
+                JScrollPane scroll = new JScrollPane(panelInstrucciones);
+                scroll.setPreferredSize(new Dimension(440, 455));
+
+                JOptionPane.showMessageDialog(null, scroll, "Instrucciones del juego", JOptionPane.INFORMATION_MESSAGE);
+            }
+            else
+            {
+                if (seleccionDado == 2) {
+                    for (boton = 0; boton < botonesEnDadosActivos.size(); boton++) {
+                        if (e.getSource() == botonesEnDadosActivos.get(boton)) {
+                            secondSelecction(boton);
+                        }
+                    }
+                    seleccionDado = 1;
+                } else {
+                    for (boton = 0; boton < botonesEnDadosActivos.size(); boton++) {
+                        if (e.getSource() == botonesEnDadosActivos.get(boton)) {
+                            firstSelection(boton);
+                        }
+                    }
+                }
+            }
+            rePaintDadosInactivos();
+            rePaintDadosUtilizados();
+            rePaintDadosActivos();
+        }
     }
+
 }
 
