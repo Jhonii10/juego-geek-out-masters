@@ -171,7 +171,7 @@ public class InterfazDeUsuario extends JFrame {
      */
     public void createHelpButton(GridBagConstraints constraints) {
         ayuda = new JButton(" ? ");
-        ayuda.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,22));
+        ayuda.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,18));
         ayuda.setForeground(Color.white);
         ayuda.setBackground(new Color(0, 102, 255));
         constraints.gridx = 6;
@@ -179,7 +179,7 @@ public class InterfazDeUsuario extends JFrame {
         constraints.gridwidth = 1;
         constraints.fill = GridBagConstraints.NONE;
         constraints.anchor = GridBagConstraints.NORTHEAST;
-        constraints.insets = new Insets(10,10,10,10);
+        constraints.insets = new Insets(20,10,10,10);
 
         this.add(ayuda, constraints);
     }
