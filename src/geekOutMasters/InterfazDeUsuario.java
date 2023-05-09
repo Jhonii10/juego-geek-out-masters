@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * This class is used for ...
  * @autor Jhoni ipia
  * @autor Alexandra Lerma
- * @version v.1.0.2
+ * @version v.1.0.2git
  * @date:21/03/2023
  */
 public class InterfazDeUsuario extends JFrame {
@@ -786,44 +786,32 @@ public class InterfazDeUsuario extends JFrame {
      * This function verify Inactives dices.
      */
 
-    private void verifyDicesInDadosActivos() {
-        if (botonesEnDadosActivos.size()==0) {
-            nuevaRonda.addMouseListener(escucha);
-            nuevaRonda.setBackground(Color.green);
-            estado=8;
-            mensajesAccionesDados.setText(getEstadoToString()[0]);
-            panelAccionesDados.add(mensajesAccionesDados);
-        } else if (botonesEnDadosActivos.size() == 1) {
-            if (game.dadosActivosArray.get(0).getCara() == 1 | game.dadosActivosArray.get(0).getCara() == 2 | game.dadosActivosArray.get(0).getCara() == 3) {
+        private void verifyDicesInDadosActivos() {
+            if (botonesEnDadosActivos.size()==0) {
                 nuevaRonda.addMouseListener(escucha);
                 nuevaRonda.setBackground(Color.green);
                 estado=8;
                 mensajesAccionesDados.setText(getEstadoToString()[0]);
                 panelAccionesDados.add(mensajesAccionesDados);
-            } else if (game.dadosActivosArray.get(0).getCara() == 5 | game.dadosActivosArray.get(0).getCara() == 6) {
-                nuevaRonda.addMouseListener(escucha);
-                nuevaRonda.setBackground(Color.green);
-                estado=8;
-                mensajesAccionesDados.setText(getEstadoToString()[0]);
-                panelAccionesDados.add(mensajesAccionesDados);
-            }
-        } else {
-            switch (botonesEnDadosActivos.size()) {
-                case 2:
-                    if (game.dadosActivosArray.get(0).getCara() == 5 | game.dadosActivosArray.get(0).getCara() == 6) {
-                        if (game.dadosActivosArray.get(1).getCara() == 5 | game.dadosActivosArray.get(1).getCara() == 6) {
-                            nuevaRonda.addMouseListener(escucha);
-                            nuevaRonda.setBackground(Color.green);
-                            estado=8;
-                            mensajesAccionesDados.setText(getEstadoToString()[0]);
-                            panelAccionesDados.add(mensajesAccionesDados);
-                        }
-                    }
-                    break;
-                case 3:
-                    if (game.dadosActivosArray.get(0).getCara() == 5 | game.dadosActivosArray.get(0).getCara() == 6) {
-                        if (game.dadosActivosArray.get(1).getCara() == 5 | game.dadosActivosArray.get(1).getCara() == 6) {
-                            if (game.dadosActivosArray.get(2).getCara() == 5 | game.dadosActivosArray.get(2).getCara() == 6) {
+            } else if (botonesEnDadosActivos.size() == 1) {
+                if (game.dadosActivosArray.get(0).getCara() == 1 | game.dadosActivosArray.get(0).getCara() == 2 | game.dadosActivosArray.get(0).getCara() == 3) {
+                    nuevaRonda.addMouseListener(escucha);
+                    nuevaRonda.setBackground(Color.green);
+                    estado=8;
+                    mensajesAccionesDados.setText(getEstadoToString()[0]);
+                    panelAccionesDados.add(mensajesAccionesDados);
+                } else if (game.dadosActivosArray.get(0).getCara() == 5 | game.dadosActivosArray.get(0).getCara() == 6) {
+                    nuevaRonda.addMouseListener(escucha);
+                    nuevaRonda.setBackground(Color.green);
+                    estado=8;
+                    mensajesAccionesDados.setText(getEstadoToString()[0]);
+                    panelAccionesDados.add(mensajesAccionesDados);
+                }
+            } else {
+                switch (botonesEnDadosActivos.size()) {
+                    case 2:
+                        if (game.dadosActivosArray.get(0).getCara() == 5 | game.dadosActivosArray.get(0).getCara() == 6) {
+                            if (game.dadosActivosArray.get(1).getCara() == 5 | game.dadosActivosArray.get(1).getCara() == 6) {
                                 nuevaRonda.addMouseListener(escucha);
                                 nuevaRonda.setBackground(Color.green);
                                 estado=8;
@@ -831,13 +819,11 @@ public class InterfazDeUsuario extends JFrame {
                                 panelAccionesDados.add(mensajesAccionesDados);
                             }
                         }
-                    }
-                    break;
-                case 4:
-                    if (game.dadosActivosArray.get(0).getCara() == 5 | game.dadosActivosArray.get(0).getCara() == 6) {
-                        if (game.dadosActivosArray.get(1).getCara() == 5 | game.dadosActivosArray.get(1).getCara() == 6) {
-                            if (game.dadosActivosArray.get(2).getCara() == 5 | game.dadosActivosArray.get(2).getCara() == 6) {
-                                if (game.dadosActivosArray.get(3).getCara() == 5 | game.dadosActivosArray.get(3).getCara() == 6) {
+                        break;
+                    case 3:
+                        if (game.dadosActivosArray.get(0).getCara() == 5 | game.dadosActivosArray.get(0).getCara() == 6) {
+                            if (game.dadosActivosArray.get(1).getCara() == 5 | game.dadosActivosArray.get(1).getCara() == 6) {
+                                if (game.dadosActivosArray.get(2).getCara() == 5 | game.dadosActivosArray.get(2).getCara() == 6) {
                                     nuevaRonda.addMouseListener(escucha);
                                     nuevaRonda.setBackground(Color.green);
                                     estado=8;
@@ -846,14 +832,12 @@ public class InterfazDeUsuario extends JFrame {
                                 }
                             }
                         }
-                    }
-                    break;
-                case 5:
-                    if (game.dadosActivosArray.get(0).getCara() == 5 | game.dadosActivosArray.get(0).getCara() == 6) {
-                        if (game.dadosActivosArray.get(1).getCara() == 5 | game.dadosActivosArray.get(1).getCara() == 6) {
-                            if (game.dadosActivosArray.get(2).getCara() == 5 | game.dadosActivosArray.get(2).getCara() == 6) {
-                                if (game.dadosActivosArray.get(3).getCara() == 5 | game.dadosActivosArray.get(3).getCara() == 6) {
-                                    if (game.dadosActivosArray.get(4).getCara() == 5 | game.dadosActivosArray.get(4).getCara() == 6) {
+                        break;
+                    case 4:
+                        if (game.dadosActivosArray.get(0).getCara() == 5 | game.dadosActivosArray.get(0).getCara() == 6) {
+                            if (game.dadosActivosArray.get(1).getCara() == 5 | game.dadosActivosArray.get(1).getCara() == 6) {
+                                if (game.dadosActivosArray.get(2).getCara() == 5 | game.dadosActivosArray.get(2).getCara() == 6) {
+                                    if (game.dadosActivosArray.get(3).getCara() == 5 | game.dadosActivosArray.get(3).getCara() == 6) {
                                         nuevaRonda.addMouseListener(escucha);
                                         nuevaRonda.setBackground(Color.green);
                                         estado=8;
@@ -863,15 +847,13 @@ public class InterfazDeUsuario extends JFrame {
                                 }
                             }
                         }
-                    }
-                    break;
-                case 6:
-                    if (game.dadosActivosArray.get(0).getCara() == 5 | game.dadosActivosArray.get(0).getCara() == 6) {
-                        if (game.dadosActivosArray.get(1).getCara() == 5 | game.dadosActivosArray.get(1).getCara() == 6) {
-                            if (game.dadosActivosArray.get(2).getCara() == 5 | game.dadosActivosArray.get(2).getCara() == 6) {
-                                if (game.dadosActivosArray.get(3).getCara() == 5 | game.dadosActivosArray.get(3).getCara() == 6) {
-                                    if (game.dadosActivosArray.get(4).getCara() == 5 | game.dadosActivosArray.get(4).getCara() == 6) {
-                                        if (game.dadosActivosArray.get(5).getCara() == 5 | game.dadosActivosArray.get(5).getCara() == 6) {
+                        break;
+                    case 5:
+                        if (game.dadosActivosArray.get(0).getCara() == 5 | game.dadosActivosArray.get(0).getCara() == 6) {
+                            if (game.dadosActivosArray.get(1).getCara() == 5 | game.dadosActivosArray.get(1).getCara() == 6) {
+                                if (game.dadosActivosArray.get(2).getCara() == 5 | game.dadosActivosArray.get(2).getCara() == 6) {
+                                    if (game.dadosActivosArray.get(3).getCara() == 5 | game.dadosActivosArray.get(3).getCara() == 6) {
+                                        if (game.dadosActivosArray.get(4).getCara() == 5 | game.dadosActivosArray.get(4).getCara() == 6) {
                                             nuevaRonda.addMouseListener(escucha);
                                             nuevaRonda.setBackground(Color.green);
                                             estado=8;
@@ -882,16 +864,14 @@ public class InterfazDeUsuario extends JFrame {
                                 }
                             }
                         }
-                    }
-                    break;
-                case 7:
-                    if (game.dadosActivosArray.get(0).getCara() == 5 | game.dadosActivosArray.get(0).getCara() == 6) {
-                        if (game.dadosActivosArray.get(1).getCara() == 5 | game.dadosActivosArray.get(1).getCara() == 6) {
-                            if (game.dadosActivosArray.get(2).getCara() == 5 | game.dadosActivosArray.get(2).getCara() == 6) {
-                                if (game.dadosActivosArray.get(3).getCara() == 5 | game.dadosActivosArray.get(3).getCara() == 6) {
-                                    if (game.dadosActivosArray.get(4).getCara() == 5 | game.dadosActivosArray.get(4).getCara() == 6) {
-                                        if (game.dadosActivosArray.get(5).getCara() == 5 | game.dadosActivosArray.get(5).getCara() == 6) {
-                                            if (game.dadosActivosArray.get(6).getCara() == 5 | game.dadosActivosArray.get(6).getCara() == 6) {
+                        break;
+                    case 6:
+                        if (game.dadosActivosArray.get(0).getCara() == 5 | game.dadosActivosArray.get(0).getCara() == 6) {
+                            if (game.dadosActivosArray.get(1).getCara() == 5 | game.dadosActivosArray.get(1).getCara() == 6) {
+                                if (game.dadosActivosArray.get(2).getCara() == 5 | game.dadosActivosArray.get(2).getCara() == 6) {
+                                    if (game.dadosActivosArray.get(3).getCara() == 5 | game.dadosActivosArray.get(3).getCara() == 6) {
+                                        if (game.dadosActivosArray.get(4).getCara() == 5 | game.dadosActivosArray.get(4).getCara() == 6) {
+                                            if (game.dadosActivosArray.get(5).getCara() == 5 | game.dadosActivosArray.get(5).getCara() == 6) {
                                                 nuevaRonda.addMouseListener(escucha);
                                                 nuevaRonda.setBackground(Color.green);
                                                 estado=8;
@@ -903,11 +883,31 @@ public class InterfazDeUsuario extends JFrame {
                                 }
                             }
                         }
-                    }
-                    break;
+                        break;
+                    case 7:
+                        if (game.dadosActivosArray.get(0).getCara() == 5 | game.dadosActivosArray.get(0).getCara() == 6) {
+                            if (game.dadosActivosArray.get(1).getCara() == 5 | game.dadosActivosArray.get(1).getCara() == 6) {
+                                if (game.dadosActivosArray.get(2).getCara() == 5 | game.dadosActivosArray.get(2).getCara() == 6) {
+                                    if (game.dadosActivosArray.get(3).getCara() == 5 | game.dadosActivosArray.get(3).getCara() == 6) {
+                                        if (game.dadosActivosArray.get(4).getCara() == 5 | game.dadosActivosArray.get(4).getCara() == 6) {
+                                            if (game.dadosActivosArray.get(5).getCara() == 5 | game.dadosActivosArray.get(5).getCara() == 6) {
+                                                if (game.dadosActivosArray.get(6).getCara() == 5 | game.dadosActivosArray.get(6).getCara() == 6) {
+                                                    nuevaRonda.addMouseListener(escucha);
+                                                    nuevaRonda.setBackground(Color.green);
+                                                    estado=8;
+                                                    mensajesAccionesDados.setText(getEstadoToString()[0]);
+                                                    panelAccionesDados.add(mensajesAccionesDados);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        break;
+                }
             }
         }
-    }
 
 
 
@@ -918,7 +918,7 @@ public class InterfazDeUsuario extends JFrame {
                 break;
             case 2:
                 estadoToString[0] = "Has ejecutado el poder del Meeple. Continúa jugando.\n" + "\nRecuerda pasar el"
-                        + " mouse por las secciones dados inactivos y dados utilizados para ver los dados que estén allí.";
+                        + " mouse por las secciones dados inactivos y dados utilizados para ver los dados que estén ahí.";
                 break;
             case 3:
                 estadoToString[0] = "Has seleccionado la Nave Espacial: puedes enviar un dado no usado (de la sección"
@@ -927,7 +927,7 @@ public class InterfazDeUsuario extends JFrame {
             case 4:
                 estadoToString[0] = "Has ejecutado el poder de la Nave Espacial. Continúa jugando.\n"
                         + "\nRecuerda pasar el mouse por las secciones dados inactivos y dados utilizados para ver los"
-                        + " dados que estén allí.";;
+                        + " dados que estén ahí.";;
                 break;
             case 5:
                 estadoToString[0] = "Has seleccionado el Superheroe: puedes hacer que cualquier dado no usado (sección"
@@ -935,7 +935,7 @@ public class InterfazDeUsuario extends JFrame {
                 break;
             case 6:
                 estadoToString[0] = "Has ejecutado el poder del Superhéroe. Continúa jugando.\n" + "\nRecuerda pasar el"
-                        + " mouse por las secciones dados inactivos y dados utilizados para ver los dados que estén allí.";;
+                        + " mouse por las secciones dados inactivos y dados utilizados para ver los dados que estén ahí.";;
                 break;
 
             case 7:
@@ -952,7 +952,7 @@ public class InterfazDeUsuario extends JFrame {
                 estadoToString[0] = MENSAJE_INICIO;
                 break;
             case 11:
-                estadoToString[0] = "Lo sentimos. Hubo un problema :/ Por favor intenta de nuevo.";
+                estadoToString[0] = "Lo sentimos. Hubo un problema "+"\n"+"Por favor intenta de nuevo.";
         }
         return estadoToString;
     }
