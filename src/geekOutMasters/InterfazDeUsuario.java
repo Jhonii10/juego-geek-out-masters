@@ -748,7 +748,6 @@ public class InterfazDeUsuario extends JFrame {
      */
 
     private void verifyDicesInDadosActivos() {
-        GridBagConstraints constraints = new GridBagConstraints();
         if (botonesEnDadosActivos.size()==0) {
             nuevaRonda.addMouseListener(escucha);
             nuevaRonda.setBackground(Color.green);
