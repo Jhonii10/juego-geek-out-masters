@@ -6,13 +6,16 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 /**
  * This class is used for ...
  * @autor Jhoni ipia
  * @autor Alexandra Lerma
- * @version v.1.0.0 date:21/03/2023
+ * @version v.1.0.2
+ * @date:21/03/2023
  */
 public class InterfazDeUsuario extends JFrame {
 
@@ -32,10 +35,12 @@ public class InterfazDeUsuario extends JFrame {
     private static final String MENSAJE_INICIO ="Bienvenido a Geek Out Masters \n";
     
 
-    /**Game instructions */
+     /**
+     * Game instructions
+     */
 
     private static final String INSTRUCCIONES = "Lo primero que debes saber es que los dados aparecen aleatoriamente"
-    + " después de presionar \"Nueva ronda.\"\n"
+    + " después de presionar \"Nueva ronda o play.\"\n"
     + "\nDe los 10 dados que trae el juego se toman 3 y se colocan en el sector de \"Dados\""
     + "Inactivos\". Los otros 7 dados se tiran y pasan a ser los \"Dados Activos\".\n"
     + "\nSe van eligiendo los dados a utilizar según las habilidades de sus caras y se pasan"
@@ -86,9 +91,34 @@ public class InterfazDeUsuario extends JFrame {
         this.setSize(1000,600);
         this.setMinimumSize(new Dimension(1100, 500));
         this.setResizable(true);
+        imageDado =new ImageIcon(getClass().getResource("/resources/7.png"));
+
+        // Set the icon image
+        if (imageDado != null) {
+            Image image = imageDado.getImage();
+            int width = 80;
+            int height = 70;
+            Image scaledImage = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+            this.setIconImage(scaledImage);
+        }
+
+        // Add a WindowListener to show confirmation dialog on close
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int confirmed = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que quieres salir?",
+                        "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                if (confirmed == JOptionPane.YES_OPTION) {
+                    // Si el usuario confirma la salida, cierra la aplicación
+                    dispose();
+                    System.exit(0);
+                }
+            }
+        });
+
         this.setVisible(true);
         this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         getContentPane().setBackground(new Color(28, 34, 76));
 
     }
@@ -168,7 +198,7 @@ public class InterfazDeUsuario extends JFrame {
         constraints.gridx = 0;
         constraints.gridy = 0;
         constraints.gridwidth = 7;
-        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.fill = GridBagConstraints.BOTH;
         constraints.anchor = GridBagConstraints.NORTH;
         constraints.weightx = 1.0;
         constraints.weighty = 1.0;
@@ -209,7 +239,7 @@ public class InterfazDeUsuario extends JFrame {
         puntaje = new JTextArea(1, 5);
         puntaje.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,18));
         puntaje.setText("PUNTAJE: " + puntos);
-        puntaje.setBackground(new Color(28, 34,76 ));
+        puntaje.setBackground(Color.getHSBColor(120f/360, 1f, 0.5f));
         puntaje.setForeground(Color.WHITE);
         puntaje.setEditable(false);
         puntaje.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
@@ -219,7 +249,7 @@ public class InterfazDeUsuario extends JFrame {
         constraints.gridwidth = 1;
         constraints.fill = GridBagConstraints.WEST;
         constraints.anchor = GridBagConstraints.CENTER;
-        constraints.insets = new Insets(10,10,10,50);
+        constraints.insets = new Insets(10,100,10,10);
         add(puntaje, constraints);
     }
 
@@ -233,7 +263,7 @@ public class InterfazDeUsuario extends JFrame {
         numeroRonda = new JTextArea(1, 5); // cambiar el tamaño del JTextArea
         numeroRonda.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,18));
         numeroRonda.setText("RONDA: " + ronda);
-        numeroRonda.setBackground(new Color (28,34,76));
+        numeroRonda.setBackground(Color.getHSBColor(50f/360, 1f, 0.8f));
         numeroRonda.setForeground(Color.white);
         numeroRonda.setEditable(false);
         numeroRonda.setBorder(BorderFactory.createLineBorder(Color.white, 1)); // establecer el borde en negro con grosor 2
@@ -243,7 +273,7 @@ public class InterfazDeUsuario extends JFrame {
         constraints.gridwidth = 1;
         constraints.fill = GridBagConstraints.WEST;
         constraints.anchor = GridBagConstraints.CENTER;
-        constraints.insets = new Insets(10,10,10,50);
+        constraints.insets = new Insets(10,10,10,10);
         add(numeroRonda, constraints);
     }
 
@@ -261,8 +291,8 @@ public class InterfazDeUsuario extends JFrame {
         constraints.gridy = 1;
         constraints.gridwidth = 1;
         constraints.fill = GridBagConstraints.WEST;
-        constraints.anchor = GridBagConstraints.NORTHEAST;
-        constraints.insets = new Insets(10,10,10,10);
+        constraints.anchor = GridBagConstraints.EAST;
+        constraints.insets = new Insets(0,10,0,10);
 
         this.add(ayuda, constraints);
     }
@@ -302,7 +332,7 @@ public class InterfazDeUsuario extends JFrame {
 
      public void createDadosInactivosPane(GridBagConstraints constraints) {
         panelDadosInactivos = new JPanel();
-        panelDadosInactivos.setPreferredSize(new Dimension(350, 150)); 
+        panelDadosInactivos.setPreferredSize(new Dimension(350, 150));
         panelDadosInactivos.setBackground(Color.WHITE);
         TitledBorder borde = BorderFactory.createTitledBorder("Dados inactivos");
         borde.setTitleColor(Color.WHITE);
@@ -390,8 +420,8 @@ public class InterfazDeUsuario extends JFrame {
     public void createDadosActivosPane(GridBagConstraints constraints)
     {
         panelDadosActivos = new JPanel();
-        panelDadosActivos.setPreferredSize(new Dimension(350, 150));
-        TitledBorder borde = BorderFactory.createTitledBorder("Dados inactivos");
+        panelDadosActivos.setPreferredSize(new Dimension(400, 150));
+        TitledBorder borde = BorderFactory.createTitledBorder("Dados activos");
         borde.setTitleColor(Color.WHITE);
         panelDadosActivos.setBorder(borde); 
         panelDadosActivos.setBackground(new Color(28, 34, 76));
@@ -407,7 +437,7 @@ public class InterfazDeUsuario extends JFrame {
         constraints.gridx = 3;
         constraints.gridy = 4;
         constraints.gridwidth = 1;
-        constraints.fill = GridBagConstraints.BOTH;
+        constraints.fill = GridBagConstraints.NONE;
         constraints.anchor = GridBagConstraints.LINE_END;
 
         this.add(panelDadosActivos, constraints);
@@ -757,7 +787,6 @@ public class InterfazDeUsuario extends JFrame {
      */
 
     private void verifyDicesInDadosActivos() {
-        GridBagConstraints constraints = new GridBagConstraints();
         if (botonesEnDadosActivos.size()==0) {
             nuevaRonda.addMouseListener(escucha);
             nuevaRonda.setBackground(Color.green);
