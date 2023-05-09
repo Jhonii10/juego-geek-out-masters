@@ -1,6 +1,8 @@
 package geekOutMasters;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
+
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -28,6 +30,7 @@ public class InterfazDeUsuario extends JFrame {
     private int ronda, puntos, seleccionDado, boton, unBoton, estado;
     private ArrayList<JButton> botonesEnDadosUtilizados, botonesEnDadosInactivos, botonesEnDadosActivos;
     private static final String MENSAJE_INICIO ="Bienvenido a Geek Out Masters \n";
+    
 
     /**Game instructions */
 
@@ -86,7 +89,7 @@ public class InterfazDeUsuario extends JFrame {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        getContentPane().setBackground(new Color(255,255,255));
+        getContentPane().setBackground(new Color(28, 34, 76));
 
     }
 
@@ -174,7 +177,7 @@ public class InterfazDeUsuario extends JFrame {
      * @param constraints Grid constraints for placing the header in the main container.
      */
     public void createHeader(GridBagConstraints constraints){
-        headerProject = new Header("GEEK OUT MASTERS", Color.white);
+        headerProject = new Header("GEEK OUT MASTERS", new Color(28, 34, 76));
         constraints.gridx = 0;
         constraints.gridy = 0;
         constraints.gridwidth = 7;
@@ -198,7 +201,7 @@ public class InterfazDeUsuario extends JFrame {
         play.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,18));
         play.setForeground(Color.WHITE);
         play.addMouseListener(escucha);
-        play.setBackground(new Color(255, 81, 51));
+        play.setBackground(Color.RED);
         constraints.gridx = 0;
         constraints.gridy = 1;
         constraints.gridwidth = 1;
@@ -219,10 +222,10 @@ public class InterfazDeUsuario extends JFrame {
         puntaje = new JTextArea(1, 5);
         puntaje.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,18));
         puntaje.setText("PUNTAJE: " + puntos);
-        puntaje.setBackground(Color.WHITE);
-        puntaje.setForeground(Color.BLACK);
+        puntaje.setBackground(new Color(28, 34,76 ));
+        puntaje.setForeground(Color.WHITE);
         puntaje.setEditable(false);
-        puntaje.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        puntaje.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
 
         constraints.gridx = 2;
         constraints.gridy = 1;
@@ -243,10 +246,10 @@ public class InterfazDeUsuario extends JFrame {
         numeroRonda = new JTextArea(1, 5); // cambiar el tamaño del JTextArea
         numeroRonda.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,18));
         numeroRonda.setText("RONDA: " + ronda);
-        numeroRonda.setBackground(Color.WHITE);
-        numeroRonda.setForeground(Color.BLACK);
+        numeroRonda.setBackground(new Color (28,34,76));
+        numeroRonda.setForeground(Color.white);
         numeroRonda.setEditable(false);
-        numeroRonda.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1)); // establecer el borde en negro con grosor 2
+        numeroRonda.setBorder(BorderFactory.createLineBorder(Color.white, 1)); // establecer el borde en negro con grosor 2
 
         constraints.gridx = 3;
         constraints.gridy = 1;
@@ -284,10 +287,15 @@ public class InterfazDeUsuario extends JFrame {
     public void createDadosUtilizadosPane(GridBagConstraints constraints) {
         panelDadosUtilizados = new JPanel();
         panelDadosUtilizados.setPreferredSize(new Dimension(350, 150)); // Cambia el tamaño mínimo del panel;
-        panelDadosUtilizados.setBorder(BorderFactory.createTitledBorder("Dados utilizados"));
-        panelDadosUtilizados.setBackground(Color.WHITE);
+        TitledBorder borde = BorderFactory.createTitledBorder("Dados utilizados");
+        borde.setTitleColor(Color.WHITE);
+
+        panelDadosUtilizados.setBorder(borde); // Establece el borde del panel
+        panelDadosUtilizados.setBackground(new Color(28, 34, 76));
+        panelDadosUtilizados.setForeground(Color.WHITE);
         panelDadosUtilizados.removeMouseListener(escucha);
         rePaintDadosUtilizados();
+    
 
         constraints.gridx = 2;
         constraints.gridy = 3;
@@ -305,11 +313,15 @@ public class InterfazDeUsuario extends JFrame {
      * @param constraints
      */
 
-    public void createDadosInactivosPane(GridBagConstraints constraints) {
+     public void createDadosInactivosPane(GridBagConstraints constraints) {
         panelDadosInactivos = new JPanel();
-        panelDadosInactivos.setPreferredSize(new Dimension(350, 150)); // Cambia el tamaño mínimo del panel
-        panelDadosInactivos.setBorder(BorderFactory.createTitledBorder("Dados inactivos"));
+        panelDadosInactivos.setPreferredSize(new Dimension(350, 150)); 
         panelDadosInactivos.setBackground(Color.WHITE);
+        TitledBorder borde = BorderFactory.createTitledBorder("Dados inactivos");
+        borde.setTitleColor(Color.WHITE);
+        panelDadosInactivos.setBorder(borde); 
+        panelDadosInactivos.setBackground(new Color(28, 34, 76));
+    
 
         botonesEnDadosInactivos.add(dado8);
         botonesEnDadosInactivos.add(dado9);
@@ -340,7 +352,7 @@ public class InterfazDeUsuario extends JFrame {
         imagenNuevoTamanho = new ImageIcon(imagenOtroTamanho);
         for (boton = 0; boton < botonesEnDadosInactivos.size(); boton++) {
             botonesEnDadosInactivos.get(boton).setIcon(imagenNuevoTamanho);
-            botonesEnDadosInactivos.get(boton).setBackground(Color.WHITE);
+            botonesEnDadosInactivos.get(boton).setBackground(new Color (28,34,76));
         }
         rePaintDadosInactivos();
     }
@@ -352,9 +364,13 @@ public class InterfazDeUsuario extends JFrame {
     public void createAccionesDadosPane(GridBagConstraints constraints)
     {
         panelAccionesDados = new JPanel();
-        panelAccionesDados.setBorder(BorderFactory.createTitledBorder("Acciones que está realizando"));
         panelAccionesDados.setPreferredSize(new Dimension(350, 150));;
         panelAccionesDados.setBackground(Color.WHITE);
+        TitledBorder borde = BorderFactory.createTitledBorder("Acciones que se estan realizando");
+        borde.setTitleColor(Color.WHITE);
+        panelAccionesDados.setBorder(borde); 
+        panelAccionesDados.setBackground(new Color(28, 34, 76));
+    
 
         mensajesAccionesDados = new JTextArea(20,30);
         mensajesAccionesDados.setFont(new Font("SansSerif", Font.BOLD, 12));
@@ -385,9 +401,11 @@ public class InterfazDeUsuario extends JFrame {
     {
         panelDadosActivos = new JPanel();
         panelDadosActivos.setPreferredSize(new Dimension(350, 150));
-        panelDadosActivos.setBorder(BorderFactory.createTitledBorder("Dados activos"));
-        panelDadosActivos.setBackground(Color.WHITE);
-
+        TitledBorder borde = BorderFactory.createTitledBorder("Dados inactivos");
+        borde.setTitleColor(Color.WHITE);
+        panelDadosActivos.setBorder(borde); 
+        panelDadosActivos.setBackground(new Color(28, 34, 76));
+    
         botonesEnDadosActivos.add(dado1);
         botonesEnDadosActivos.add(dado2);
         botonesEnDadosActivos.add(dado3);
@@ -431,7 +449,7 @@ public class InterfazDeUsuario extends JFrame {
                  imagenNuevoTamanho = new ImageIcon(imagenOtroTamanho);
              }
              botonesEnDadosActivos.get(boton).setIcon(imagenNuevoTamanho);
-             botonesEnDadosActivos.get(boton).setBackground(Color.WHITE);
+             botonesEnDadosActivos.get(boton).setBackground(new Color (28,34,76));
              botonesEnDadosActivos.get(boton).addMouseListener(escucha);
  
          }
@@ -448,8 +466,9 @@ public class InterfazDeUsuario extends JFrame {
         nuevaRonda.setFont(new Font(Font.DIALOG_INPUT,Font.BOLD,20));
         nuevaRonda.setForeground(Color.WHITE);
         nuevaRonda.addMouseListener(escucha);
-        nuevaRonda.setBackground(new Color(0, 0, 0));
+        nuevaRonda.setBackground(new Color(28, 34, 76));
         nuevaRonda.setFocusable(true);
+        nuevaRonda.setBorder(BorderFactory.createLineBorder(Color.white, 1));
 
         constraints.gridx = 2;
         constraints.gridy = 5;
