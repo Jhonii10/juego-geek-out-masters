@@ -377,6 +377,9 @@ public class InterfazDeUsuario extends JFrame {
         mensajesAccionesDados.setWrapStyleWord(true);
         mensajesAccionesDados.setLineWrap(true);
         mensajesAccionesDados.setEditable(false);
+        mensajesAccionesDados.setForeground(Color.WHITE);
+        mensajesAccionesDados.setBackground(new Color(28, 34, 76));
+    
 
         constraints.gridx = 2;
         constraints.gridy = 4;
