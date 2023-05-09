@@ -311,6 +311,11 @@ public class InterfazDeUsuario extends JFrame {
         panelDadosInactivos.setBorder(BorderFactory.createTitledBorder("Dados inactivos"));
         panelDadosInactivos.setBackground(Color.WHITE);
 
+        botonesEnDadosInactivos.add(dado8);
+        botonesEnDadosInactivos.add(dado9);
+        botonesEnDadosInactivos.add(dado10);
+
+
         constraints.gridx = 3;
         constraints.gridy = 3;
         constraints.gridwidth = 1;
@@ -1051,7 +1056,7 @@ public class InterfazDeUsuario extends JFrame {
         }
 
         /**
-     * This function displays mouse events.
+     * This function shows on the screen what the first die did on the second chosen die .
      */
 
         public void mouseClicked(MouseEvent e) {
