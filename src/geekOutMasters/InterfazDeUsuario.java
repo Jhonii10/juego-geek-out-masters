@@ -29,6 +29,8 @@ public class InterfazDeUsuario extends JFrame {
     private ArrayList<JButton> botonesEnDadosUtilizados, botonesEnDadosInactivos, botonesEnDadosActivos;
     private static final String MENSAJE_INICIO ="Bienvenido a Geek Out Masters \n";
 
+    /**Game instructions */
+
     private static final String INSTRUCCIONES = "Lo primero que debes saber es que los dados aparecen aleatoriamente"
     + " después de presionar \"Nueva ronda.\"\n"
     + "\nDe los 10 dados que trae el juego se toman 3 y se colocan en el sector de \"Dados\""
@@ -275,11 +277,6 @@ public class InterfazDeUsuario extends JFrame {
         this.add(ayuda, constraints);
     }
 
-
-
-
-
-
     /**
      * This function creates the DadosUtilizados panel.
      * @param constraints
@@ -314,6 +311,11 @@ public class InterfazDeUsuario extends JFrame {
         panelDadosInactivos.setBorder(BorderFactory.createTitledBorder("Dados inactivos"));
         panelDadosInactivos.setBackground(Color.WHITE);
 
+        botonesEnDadosInactivos.add(dado8);
+        botonesEnDadosInactivos.add(dado9);
+        botonesEnDadosInactivos.add(dado10);
+
+
         constraints.gridx = 3;
         constraints.gridy = 3;
         constraints.gridwidth = 1;
@@ -324,8 +326,12 @@ public class InterfazDeUsuario extends JFrame {
         this.add(panelDadosInactivos, constraints);
 
         determinateBotonesInactivos();
-
     }
+
+    /**
+     * This function determines the inactive buttons.
+     * @param constraints
+     */
 
     public void determinateBotonesInactivos()
     {
@@ -536,6 +542,10 @@ public class InterfazDeUsuario extends JFrame {
         repaint();
     }
 
+    /**
+     * This function updates DadosInactivos panel.
+     */
+
 
     private void rePaintDadosInactivos()
     {
@@ -733,11 +743,9 @@ public class InterfazDeUsuario extends JFrame {
         panelDadosUtilizados.updateUI();
     }
 
-
-
-
-
-
+    /**
+     * This function verify Inactives dices.
+     */
 
     private void verifyDicesInDadosActivos() {
         GridBagConstraints constraints = new GridBagConstraints();
@@ -926,6 +934,10 @@ public class InterfazDeUsuario extends JFrame {
     /**
      * inner class that extends an Adapter Class or implements Listeners used by GUI class
      */
+
+     /**
+     * This function displays on the screen what the chosen die does.
+     */
     private class Escucha extends MouseAdapter {
 
         private String kk;
@@ -995,6 +1007,10 @@ public class InterfazDeUsuario extends JFrame {
             }
         }
 
+        /**
+        * This function shows on the screen what the first die did on the second chosen die .
+        */
+
         public void secondSelecction(int boton)
         {
             if(seleccionDado==2) {
@@ -1038,6 +1054,10 @@ public class InterfazDeUsuario extends JFrame {
                 panelAccionesDados.add(mensajesAccionesDados);
             }
         }
+
+        /**
+     * This function shows on the screen what the first die did on the second chosen die .
+     */
 
         public void mouseClicked(MouseEvent e) {
             if (e.getSource() == nuevaRonda || e.getSource() == play ) {
