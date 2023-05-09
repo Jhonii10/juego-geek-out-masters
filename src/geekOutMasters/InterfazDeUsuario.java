@@ -135,29 +135,16 @@ public class InterfazDeUsuario extends JFrame {
         imagenNuevoTamanho =new ImageIcon(imagenOtroTamanho);
 
         dado1 = new JButton(imagenNuevoTamanho);
-        dado1.setBackground(Color.WHITE);
         dado2 = new JButton(imagenNuevoTamanho);
-        dado2.setBackground(Color.WHITE);
         dado3 = new JButton(imagenNuevoTamanho);
-        dado3.setBackground(Color.WHITE);
         dado4 = new JButton(imagenNuevoTamanho);
-        dado4.setBackground(Color.WHITE);
         dado5 = new JButton(imagenNuevoTamanho);
-        dado5.setBackground(Color.WHITE);
         dado6 = new JButton(imagenNuevoTamanho);
-        dado6.setBackground(Color.WHITE);
         dado7 = new JButton(imagenNuevoTamanho);
-        dado7.setBackground(Color.WHITE);
         dado8 = new JButton(imagenNuevoTamanho);
-        dado8.setBackground(Color.WHITE);
         dado9 = new JButton(imagenNuevoTamanho);
-        dado9.setBackground(Color.WHITE);
         dado10 = new JButton(imagenNuevoTamanho);
-        dado10.setBackground(Color.WHITE);
-
-
-
-
+        
         createHeader(constraints);
         createPlayButton(constraints);
         createHelpButton(constraints);
@@ -1078,7 +1065,7 @@ public class InterfazDeUsuario extends JFrame {
         }
 
         /**
-     * This function shows on the screen what the first die did on the second chosen die .
+     * This function determines whether another round follows or the game is over .
      */
 
         public void mouseClicked(MouseEvent e) {
